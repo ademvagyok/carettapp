@@ -1374,21 +1374,25 @@ function selectRegion(code) {
   const region = REGIONS.yuva.find(r => r.code === code);
   if (!region) return;
 
-  // Önce yerel sayımla göster (anında), sonra Sheets'ten güncelle
-  const data = loadData();
-  const localTotal = data.filter(r => r.regionCode === code && r.mainType === 'yuva').length;
-  renderSubtypes(region, localTotal + 1);
+  // Numarayı "..." ile göster, Sheets'ten kesin değer gelince tek seferde yaz
+  renderSubtypes(region, null);
   show('subtype-section');
   hide('err-subtype');
 
-  // Sheets'ten gerçek sıradaki numarayı çek, gelince güncelle
+  // Sheets'ten gerçek sıradaki numarayı çek
   fetchNextNum(code).then(next => {
-    if (next != null) renderSubtypes(region, next);
+    if (next != null) {
+      renderSubtypes(region, next);
+    } else {
+      // İnternet yoksa yerel sayıya düş (yedek)
+      const localTotal = loadData().filter(r => r.regionCode === code && r.mainType === 'yuva').length;
+      renderSubtypes(region, localTotal + 1);
+    }
   });
 }
 
 function renderSubtypes(region, nextNumber) {
-  const next = String(nextNumber).padStart(3, '0');
+  const next = nextNumber == null ? '…' : String(nextNumber).padStart(3, '0');
   $('subtype-grid').innerHTML = region.subtypes.map(st =>
     `<button class="region-btn" id="stbtn-${st.code}" onclick="selectSubtype('${st.code}')">
       <div class="rb-code">${st.code}</div>
