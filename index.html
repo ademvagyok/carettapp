@@ -1381,13 +1381,10 @@ function selectRegion(code) {
 
   // Sheets'ten gerçek sıradaki numarayı çek
   fetchNextNum(code).then(next => {
-    if (next != null) {
-      renderSubtypes(region, next);
-    } else {
-      // İnternet yoksa yerel sayıya düş (yedek)
-      const localTotal = loadData().filter(r => r.regionCode === code && r.mainType === 'yuva').length;
-      renderSubtypes(region, localTotal + 1);
-    }
+    const n = (next != null)
+      ? next
+      : loadData().filter(r => r.regionCode === code && r.mainType === 'yuva').length + 1;
+    updateSubtypeNumbers(region, n);
   });
 }
 
@@ -1397,9 +1394,18 @@ function renderSubtypes(region, nextNumber) {
     `<button class="region-btn" id="stbtn-${st.code}" onclick="selectSubtype('${st.code}')">
       <div class="rb-code">${st.code}</div>
       <div class="rb-lbl">${st.label}</div>
-      <div class="rb-next">${st.code}-${next}</div>
+      <div class="rb-next" id="next-${st.code}">${st.code}-${next}</div>
     </button>`
   ).join('');
+}
+
+// Sadece numara metnini güncelle — butonları yeniden çizme (seçim korunur)
+function updateSubtypeNumbers(region, nextNumber) {
+  const next = String(nextNumber).padStart(3, '0');
+  region.subtypes.forEach(st => {
+    const el = $('next-' + st.code);
+    if (el) el.textContent = st.code + '-' + next;
+  });
 }
 
 // Sheets'ten bölgenin sıradaki numarasını al
