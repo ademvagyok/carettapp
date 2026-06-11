@@ -1256,15 +1256,23 @@ function selectMain(t) {
       </button>`
     ).join('');
   } else {
-    grid.innerHTML = REGIONS.iz.map(r => {
-      const count = data.filter(rec => rec.subCode === r.code).length;
-      const next  = String(count + 1).padStart(3, '0');
-      return `<button class="region-btn" id="rbtn-${r.code}" onclick="selectRegion('${r.code}')">
+    grid.innerHTML = REGIONS.iz.map(r =>
+      `<button class="region-btn" id="rbtn-${r.code}" onclick="selectRegion('${r.code}')">
         <div class="rb-code">${r.code}</div>
         <div class="rb-lbl">${r.label}</div>
-        <div class="rb-next">Sonraki: ${r.code}-${next}</div>
-      </button>`;
-    }).join('');
+        <div class="rb-next" id="iznext-${r.code}">Sonraki: ${r.code}-…</div>
+      </button>`
+    ).join('');
+    // Her iz kodu için Sheets'ten güncel sıradaki numarayı çek
+    REGIONS.iz.forEach(r => {
+      fetchNextNumIz(r.code).then(next => {
+        const n = (next != null)
+          ? next
+          : loadData().filter(rec => rec.subCode === r.code).length + 1;
+        const el = $('iznext-' + r.code);
+        if (el) el.textContent = 'Sonraki: ' + r.code + '-' + String(n).padStart(3, '0');
+      });
+    });
   }
 
   $('region-label').textContent = '2 — Bölge (' + (t === 'yuva' ? 'Yuva' : 'İz') + ')';
