@@ -732,11 +732,21 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
 </div>
 <script>
 const STORAGE_KEY   = 'caretta_v1';
-const GATE_KEY      = 'caretta_access_ok';
+const GATE_KEY      = 'caretta_access_week';
 
-// ─── GİRİŞ KAPISI ────────────────────────────────────────
-// Daha önce doğru şifre girilmişse kapıyı hiç gösterme
-if (localStorage.getItem(GATE_KEY) === '1') {
+// Bu haftanın pazartesisini YYYY-MM-DD olarak döndür
+function currentMonday() {
+  const d = new Date();
+  const day = d.getDay();                 // 0=Pazar, 1=Pazartesi...
+  const diff = (day === 0 ? 6 : day - 1); // pazartesiye kaç gün geri
+  d.setDate(d.getDate() - diff);
+  d.setHours(0,0,0,0);
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+
+// ─── GİRİŞ KAPISI (her pazartesi yenilenir) ──────────────
+// Bu hafta zaten doğru şifre girilmişse kapıyı gösterme
+if (localStorage.getItem(GATE_KEY) === currentMonday()) {
   document.addEventListener('DOMContentLoaded', () => {
     const g = document.getElementById('login-gate');
     if (g) g.style.display = 'none';
@@ -754,7 +764,7 @@ async function checkGate() {
     const res  = await fetch(GS_URL + '?checkpw=' + encodeURIComponent(pw) + '&t=' + Date.now(), { cache: 'no-store' });
     const json = await res.json();
     if (json.ok) {
-      localStorage.setItem(GATE_KEY, '1');
+      localStorage.setItem(GATE_KEY, currentMonday());
       document.getElementById('login-gate').style.display = 'none';
     } else {
       err.style.display = 'block';
