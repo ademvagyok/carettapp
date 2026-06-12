@@ -26,6 +26,16 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 /* PAGES */
 .page{display:none;min-height:100dvh;padding:1.25rem;max-width:600px;margin:0 auto;padding-bottom:90px}
 .page.active{display:block}
+.login-gate{position:fixed;inset:0;z-index:1000;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:1.5rem}
+.login-card{width:100%;max-width:360px;text-align:center}
+.login-emoji{font-size:56px;margin-bottom:1rem}
+.login-title{font-size:24px;font-weight:700;margin-bottom:.5rem;color:var(--text)}
+.login-desc{font-size:14px;color:var(--text2);margin-bottom:1.5rem}
+.login-card input{width:100%;padding:14px;font-size:16px;text-align:center;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--bg2);color:var(--text);margin-bottom:12px}
+.login-card input:focus{outline:none;border-color:var(--blue);background:var(--bg)}
+.login-btn{width:100%;padding:14px;font-size:16px;font-weight:600;background:var(--blue);color:#fff;border:none;border-radius:var(--radius-sm);cursor:pointer}
+.login-btn:disabled{opacity:.6}
+.login-err{display:none;color:var(--red);font-size:13px;margin-top:10px}
 
 /* HEADER */
 .hdr{display:flex;align-items:center;gap:11px;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
@@ -96,48 +106,21 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
 
 /* SYNC STATUS BAR */
 /* FAB */
-.fab{position:fixed;bottom:20px;right:20px;z-index:100}
-.fab button{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--border);background:var(--bg);cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.1)}
 
 /* LOGIN */
-.login-wrap{max-width:360px;margin:5rem auto}
-.login-wrap h2{font-size:22px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px}
-.login-wrap p{font-size:14px;color:var(--text2);margin-bottom:1.75rem;line-height:1.5}
-.login-wrap input{margin-bottom:12px}
-.login-err{font-size:13px;color:var(--red);margin-top:8px;display:none;font-weight:500}
-.login-back{margin-top:16px;display:block;font-size:14px;color:var(--text3);cursor:pointer;background:none;border:none;font-family:var(--font)}
 
 /* ADMIN HEADER */
 .admin-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.25rem;gap:10px;flex-wrap:wrap}
 .admin-top h2{font-size:20px;font-weight:700;letter-spacing:-.02em}
 .admin-top p{font-size:13px;color:var(--text3);margin-top:2px}
-.admin-actions{display:flex;gap:6px;flex-wrap:wrap;flex-shrink:0}
 
 /* STATS */
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1.25rem}
+
 .stat{background:var(--bg2);border-radius:var(--radius-sm);padding:13px;text-align:center;border:1px solid var(--border)}
-.stat-num{font-size:26px;font-weight:700;letter-spacing:-.02em}
-.stat-lbl{font-size:11px;color:var(--text3);margin-top:2px;font-weight:500}
 
 /* FILTERS */
-.filter-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1rem}
-.filter-btn{padding:5px 11px;border:1.5px solid var(--border);border-radius:20px;background:var(--bg);cursor:pointer;font-size:12px;font-weight:600;font-family:'DM Mono',monospace;color:var(--text2);-webkit-tap-highlight-color:transparent}
-.filter-btn.active{background:var(--blue);border-color:var(--blue);color:#fff}
 
 /* RECORD CARDS */
-.records{display:flex;flex-direction:column;gap:9px}
-.rec-card{border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:14px;background:var(--bg)}
-.rc-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px}
-.rc-id{font-family:'DM Mono',monospace;font-size:17px;font-weight:500;color:var(--blue)}
-.rc-meta{font-size:12px;color:var(--text3);margin-top:3px}
-.rc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.rcf-lbl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
-.rcf-val{font-size:13px;color:var(--text);font-weight:600;margin-top:2px}
-.rcf-coord{font-family:'DM Mono',monospace;font-size:11px;font-weight:400}
-.rc-notes{margin-top:10px;font-size:12px;color:var(--text2);border-top:1px solid var(--border);padding-top:9px;line-height:1.5}
-
-.empty-state{text-align:center;padding:3rem 1rem;color:var(--text3)}
-.empty-icon{font-size:40px;display:block;margin-bottom:12px}
 
 /* SETTINGS */
 .info-box{background:var(--blue-bg);border:1px solid var(--blue-light);border-radius:var(--radius-xs);padding:12px 14px;font-size:12px;color:var(--blue);line-height:1.7;margin-bottom:1rem}
@@ -170,16 +153,11 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
 .photo-preview-wrap{margin-top:10px;display:none}
 .photo-preview-wrap img{width:100%;max-height:220px;object-fit:cover;border-radius:var(--radius-sm);display:block}
 .photo-remove{margin-top:6px;background:none;border:none;font-size:12px;color:var(--red);cursor:pointer;font-family:var(--font);font-weight:600;padding:0}
-.rc-photo{width:100%;max-height:180px;object-fit:cover;border-radius:6px;display:block;margin-top:10px}
 
 /* EDIT MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none;align-items:flex-end;justify-content:center}
 .modal-overlay.open{display:flex}
-.modal{background:var(--bg);border-radius:var(--radius) var(--radius) 0 0;width:100%;max-width:600px;max-height:92dvh;overflow-y:auto;padding:1.25rem;padding-bottom:2rem}
-.modal-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem}
-.modal-title{font-size:17px;font-weight:700;letter-spacing:-.01em}
-.modal-close{background:none;border:none;font-size:22px;cursor:pointer;color:var(--text3);padding:2px 6px;-webkit-tap-highlight-color:transparent}
-.modal-actions{display:flex;gap:8px;margin-top:1.25rem}
+
 .modal-actions .btn-primary{flex:1}
 .modal-actions .btn-sm.danger{padding:14px 16px}
 
@@ -232,6 +210,17 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
 <body>
 
 <!-- ████ FORM PAGE ████ -->
+<div class="login-gate" id="login-gate">
+  <div class="login-card">
+    <div class="login-emoji">🐢</div>
+    <div class="login-title">Caretta Saha Kayıt</div>
+    <div class="login-desc">Devam etmek için erişim şifresini girin.</div>
+    <input type="password" id="gate-pass" placeholder="Erişim şifresi" autocomplete="off" onkeydown="if(event.key==='Enter')checkGate()">
+    <button class="login-btn" id="gate-btn" onclick="checkGate()">Giriş Yap</button>
+    <div class="login-err" id="gate-err">Şifre yanlış. Tekrar deneyin.</div>
+  </div>
+</div>
+
 <div class="page active" id="page-form">
   <div class="hdr">
     <span class="hdr-emoji">🐢</span>
@@ -741,221 +730,43 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
     <button class="btn-secondary" onclick="resetForm()">＋ Yeni Kayıt Ekle</button>
   </div>
 </div>
-<div class="page" id="page-login">
-  <div class="login-wrap">
-    <h2>🔒 Yönetici Girişi</h2>
-    <p>Bu alan yalnızca proje koordinatörlerine açıktır.</p>
-    <div class="fg" style="margin-bottom:12px">
-      <label for="admin-pass">Şifre</label>
-      <input type="password" id="admin-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')adminLogin()">
-    </div>
-    <button class="btn-primary" onclick="adminLogin()">Giriş Yap</button>
-    <div class="login-err" id="login-err">Yanlış şifre.</div>
-    <button class="login-back" onclick="showPage('form')">← Forma dön</button>
-  </div>
-</div>
-
-<!-- ████ ADMIN PAGE ████ -->
-<div class="page" id="page-admin">
-  <div class="admin-top">
-    <div>
-      <h2>Yönetici Paneli</h2>
-      <p id="admin-subtitle">Tüm saha kayıtları</p>
-    </div>
-    <div class="admin-actions">
-      <button class="btn-sm" onclick="loadFromSheets()" id="sheets-btn">🔄 Yenile</button>
-      <button class="btn-sm" onclick="adminLogout()">Çıkış</button>
-    </div>
-  </div>
-
-  <div class="stats" id="admin-stats"></div>
-
-  <div class="section">
-    <div class="sec-lbl">Filtre</div>
-    <div class="filter-row">
-      <button class="filter-btn active" onclick="setFilter('all',this)">Tümü</button>
-      <button class="filter-btn" onclick="setFilter('MY',this)">MY</button>
-      <button class="filter-btn" onclick="setFilter('MC',this)">MC</button>
-      <button class="filter-btn" onclick="setFilter('MP',this)">MP</button>
-      <button class="filter-btn" onclick="setFilter('OY',this)">OY</button>
-      <button class="filter-btn" onclick="setFilter('OC',this)">OC</button>
-      <button class="filter-btn" onclick="setFilter('OP',this)">OP</button>
-      <button class="filter-btn" onclick="setFilter('CY',this)">CY</button>
-      <button class="filter-btn" onclick="setFilter('CC',this)">CC</button>
-      <button class="filter-btn" onclick="setFilter('CP',this)">CP</button>
-      <button class="filter-btn" onclick="setFilter('MZ',this)">MZ</button>
-      <button class="filter-btn" onclick="setFilter('OZ',this)">OZ</button>
-      <button class="filter-btn" onclick="setFilter('CZ',this)">CZ</button>
-    </div>
-  </div>
-
-  <div class="records" id="records-list"></div>
-</div>
-
-<!-- ████ EDIT MODAL ████ -->
-<div class="modal-overlay" id="edit-modal">
-  <div class="modal">
-    <div class="modal-hdr">
-      <div class="modal-title">Kaydı Düzenle — <span id="edit-id-label"></span></div>
-      <button class="modal-close" onclick="closeEditModal()">✕</button>
-    </div>
-    <input type="hidden" id="edit-record-id">
-
-    <div class="section">
-      <div class="sec-lbl">Tarih ve Gözlemci</div>
-      <div class="row2">
-        <div class="fg"><label>Tarih</label><div class="date-y-wrap"><div class="date-pick" id="edit-date-pick"></div><button type="button" class="btn-yesterday" onclick="setYesterday('edit-date-pick')" title="Dün">Y</button></div></div>
-        <div class="fg"><label for="edit-observer">Kaydı Alan</label><input type="text" id="edit-observer" placeholder="Adınız"></div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="sec-lbl">Konum (GPS)</div>
-      <div class="gps-wrap">
-        <div class="fg"><label for="edit-lat">Enlem</label><input type="number" id="edit-lat" step="0.000001" inputmode="decimal"></div>
-        <div class="fg"><label for="edit-lng">Boylam</label><input type="number" id="edit-lng" step="0.000001" inputmode="decimal"></div>
-        <button class="gps-btn" onclick="getGPSEdit()">📍 GPS Al</button>
-      </div>
-      <div class="gps-note" id="edit-gps-note"></div>
-    </div>
-
-    <div class="section">
-      <div class="sec-lbl">Kum Kuşağı Mesafeleri</div>
-      <div class="row3">
-        <div class="fg"><label for="edit-dry">Kuru kum</label><div class="uw"><input type="number" id="edit-dry" step="0.1" min="0" inputmode="decimal"><span class="uunit">m</span></div></div>
-        <div class="fg"><label for="edit-semi">Yarı ıslak</label><div class="uw"><input type="number" id="edit-semi" step="0.1" min="0" inputmode="decimal"><span class="uunit">m</span></div></div>
-        <div class="fg"><label for="edit-wet">Islak kum</label><div class="uw"><input type="number" id="edit-wet" step="0.1" min="0" inputmode="decimal"><span class="uunit">m</span></div></div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="sec-lbl">Notlar</div>
-      <textarea id="edit-notes" placeholder="Notlar..." style="min-height:80px"></textarea>
-    </div>
-
-    <!-- KONTROL AÇILIŞI -->
-    <div class="section" id="edit-acilis-wrap" style="display:none">
-      <div class="sec-lbl">🧪 Kontrol Açılışı</div>
-      <div class="row2" style="margin-bottom:10px">
-        <div class="fg">
-          <label>Control Date</label>
-          <div class="date-y-wrap"><div class="date-pick" id="edit-acilis-date-pick"></div><button type="button" class="btn-yesterday" onclick="setYesterday('edit-acilis-date-pick')" title="Dün">Y</button></div>
-        </div>
-        <div class="fg"><label>Height of Dry Sand (cm)</label><div class="uw"><input type="number" id="edit-acilis-dry-height" min="0" step="0.1" inputmode="decimal"><span class="uunit">cm</span></div></div>
-      </div>
-      <div class="row2" style="margin-bottom:10px">
-        <div class="fg"><label>Height of Wet Sand (cm)</label><div class="uw"><input type="number" id="edit-acilis-wet-height" min="0" step="0.1" inputmode="decimal"><span class="uunit">cm</span></div></div>
-        <div class="fg"><label>Diameter of Egg Chamber (cm)</label><div class="uw"><input type="number" id="edit-acilis-diameter" min="0" step="0.1" inputmode="decimal"><span class="uunit">cm</span></div></div>
-      </div>
-      <div class="sec-lbl" style="margin-top:4px"># of Eggs</div>
-      <div class="row2" style="margin-bottom:10px">
-        <div class="fg"><label>Total Eggs in Nest</label><div class="uw"><input type="number" id="edit-acilis-total-eggs" min="0" step="1" inputmode="numeric"><span class="uunit">#</span></div></div>
-        <div class="fg"><label>Infested Eggs</label><div class="uw"><input type="number" id="edit-acilis-infested" min="0" step="1" inputmode="numeric"><span class="uunit">#</span></div></div>
-      </div>
-      <div class="row2" style="margin-bottom:10px">
-        <div class="fg"><label>Empty Egg Shells</label><div class="uw"><input type="number" id="edit-acilis-empty-shells" min="0" step="1" inputmode="numeric"><span class="uunit">#</span></div></div>
-        <div class="fg"><label>Unfertilized Eggs</label><div class="uw"><input type="number" id="edit-acilis-unfertilized" min="0" step="1" inputmode="numeric"><span class="uunit">#</span></div></div>
-      </div>
-      <div class="sec-lbl" style="margin-top:4px"># of Hatchlings</div>
-      <div class="row2" style="margin-bottom:10px">
-        <div class="fg"><label>Alive Hatchlings in Nest</label><div class="uw"><input type="number" id="edit-acilis-alive" min="0" step="1" inputmode="numeric"><span class="uunit">#</span></div></div>
-        <div class="fg"><label>Dead Hatchlings in Nest</label><div class="uw"><input type="number" id="edit-acilis-dead-hatch" min="0" step="1" inputmode="numeric"><span class="uunit">#</span></div></div>
-      </div>
-      <div class="sec-lbl" style="margin-top:4px"># of Embryos</div>
-      <div class="row2" style="margin-bottom:10px">
-        <div class="fg"><label>Early Embryos</label><div class="uw"><input type="number" id="edit-acilis-early" min="0" step="1" inputmode="numeric"><span class="uunit">#</span></div></div>
-        <div class="fg"><label>Middle Embryos</label><div class="uw"><input type="number" id="edit-acilis-middle" min="0" step="1" inputmode="numeric"><span class="uunit">#</span></div></div>
-      </div>
-      <div class="row2" style="margin-bottom:10px">
-        <div class="fg"><label>Late Embryos</label><div class="uw"><input type="number" id="edit-acilis-late" min="0" step="1" inputmode="numeric"><span class="uunit">#</span></div></div>
-        <div class="fg"><label>Total Dead Embryos</label><div class="uw"><input type="number" id="edit-acilis-dead-embryo" min="0" step="1" inputmode="numeric"><span class="uunit">#</span></div></div>
-      </div>
-      <div class="fg"><label>Not</label><textarea id="edit-acilis-not" style="min-height:60px"></textarea></div>
-    </div>
-
-    <!-- YAVRU ÇIKIŞI (çoklu) -->
-    <div class="section" id="edit-cikis-wrap" style="display:none">
-      <div class="sec-lbl">🐣 Yavru Çıkışı</div>
-      <div id="edit-cikis-list"></div>
-    </div>
-
-    <div class="section" id="edit-pred-section-wrap" style="display:none">
-    <div class="pred-section" id="edit-pred-section">
-      <div class="sec-lbl">1. Predasyon</div>
-      <div class="row2" style="margin-bottom:10px">
-        <div class="fg"><label for="edit-pred-extent">Kapsam</label>
-          <select id="edit-pred-extent" data-opts="extent"></select>
-        </div>
-        <div class="fg"><label>Predasyon Tarihi</label><div class="date-y-wrap"><div class="date-pick" id="edit-pred-date-pick"></div><button type="button" class="btn-yesterday" onclick="setYesterday('edit-pred-date-pick')" title="Dün">Y</button></div></div>
-      </div>
-      <div class="row2" style="margin-bottom:10px">
-        <div class="fg"><label for="edit-predator">Predatör</label><input type="text" id="edit-predator" placeholder="ör: tilki, yengeç..."></div>
-        <div class="fg"><label for="edit-pred-side">Predation Side</label>
-          <select id="edit-pred-side" data-opts="side"></select>
-        </div>
-      </div>
-      <div class="fg" style="margin-bottom:12px">
-        <label for="edit-pred-eggs">Predated Eggs</label>
-        <div class="uw"><input type="number" id="edit-pred-eggs" placeholder="0" min="0" step="1" inputmode="numeric"><span class="uunit">adet</span></div>
-      </div>
-
-      <button type="button" id="edit-pred2-toggle" onclick="toggleEditPred2()" style="background:none;border:none;font-size:13px;font-weight:600;color:var(--text2);cursor:pointer;padding:0;font-family:var(--font);display:flex;align-items:center;gap:5px">
-        <span id="edit-pred2-icon">＋</span> İkinci Predasyon
-      </button>
-
-      <div id="edit-pred2-block" style="display:none;margin-top:12px;padding-top:12px;border-top:1px dashed #fde68a">
-        <div class="sec-lbl" style="margin-bottom:8px">2. Predasyon</div>
-        <div class="row2" style="margin-bottom:10px">
-          <div class="fg"><label for="edit-pred2-extent">Kapsam</label>
-            <select id="edit-pred2-extent" data-opts="extent"></select>
-          </div>
-          <div class="fg"><label>Predasyon Tarihi</label><div class="date-y-wrap"><div class="date-pick" id="edit-pred2-date-pick"></div><button type="button" class="btn-yesterday" onclick="setYesterday('edit-pred2-date-pick')" title="Dün">Y</button></div></div>
-        </div>
-        <div class="row2" style="margin-bottom:10px">
-          <div class="fg"><label for="edit-predator2">Predatör</label><input type="text" id="edit-predator2" placeholder="ör: tilki, yengeç..."></div>
-          <div class="fg"><label for="edit-pred2-side">Predation Side</label>
-            <select id="edit-pred2-side" data-opts="side"></select>
-          </div>
-        </div>
-        <div class="fg">
-          <label for="edit-pred2-eggs">Predated Eggs</label>
-          <div class="uw"><input type="number" id="edit-pred2-eggs" placeholder="0" min="0" step="1" inputmode="numeric"><span class="uunit">adet</span></div>
-        </div>
-      </div>
-    </div>
-    </div><!-- /edit-pred-section-wrap -->
-
-    <div class="section">
-      <div class="sec-lbl">Fotoğraf</div>
-      <div class="photo-area" id="edit-photo-area">
-        <input type="file" accept="image/*" id="edit-photo-input" onchange="onEditPhotoChange(event)">
-        <span class="pa-icon">📷</span>
-        <div class="pa-lbl">Fotoğraf Değiştir / Ekle</div>
-        <div class="pa-sub">Kameradan çek veya galeriden seç</div>
-      </div>
-      <div class="photo-preview-wrap" id="edit-photo-preview-wrap">
-        <img id="edit-photo-preview" src="" alt="Düzenleme fotoğraf önizlemesi">
-        <button class="photo-remove" onclick="removeEditPhoto()">✕ Fotoğrafı kaldır</button>
-      </div>
-    </div>
-
-    <div class="modal-actions">
-      <button class="btn-primary" onclick="saveEdit()">💾 Kaydet</button>
-    </div>
-  </div>
-</div>
-
-<!-- FAB -->
-<div class="fab" id="fab">
-  <button onclick="showPage('login')" title="Yönetici paneli">⚙️</button>
-</div>
-
 <script>
-// ─── AYARLAR ───────────────────────────────────────────────
-// Yönetici şifresini değiştirmek için bu satırı düzenleyin:
-const ADMIN_PASSWORD = 'caretta2026';
-
 const STORAGE_KEY   = 'caretta_v1';
+const GATE_KEY      = 'caretta_access_ok';
+
+// ─── GİRİŞ KAPISI ────────────────────────────────────────
+// Daha önce doğru şifre girilmişse kapıyı hiç gösterme
+if (localStorage.getItem(GATE_KEY) === '1') {
+  document.addEventListener('DOMContentLoaded', () => {
+    const g = document.getElementById('login-gate');
+    if (g) g.style.display = 'none';
+  });
+}
+
+async function checkGate() {
+  const btn = document.getElementById('gate-btn');
+  const pw  = document.getElementById('gate-pass').value.trim();
+  const err = document.getElementById('gate-err');
+  err.style.display = 'none';
+  if (!pw) return;
+  btn.disabled = true; btn.textContent = 'Kontrol ediliyor...';
+  try {
+    const res  = await fetch(GS_URL + '?checkpw=' + encodeURIComponent(pw) + '&t=' + Date.now(), { cache: 'no-store' });
+    const json = await res.json();
+    if (json.ok) {
+      localStorage.setItem(GATE_KEY, '1');
+      document.getElementById('login-gate').style.display = 'none';
+    } else {
+      err.style.display = 'block';
+      document.getElementById('gate-pass').value = '';
+    }
+  } catch(e) {
+    err.textContent = 'Bağlantı hatası. İnternet gerekli.';
+    err.style.display = 'block';
+  }
+  btn.disabled = false; btn.textContent = 'Giriş Yap';
+}
+
 // ─── DOM HELPERS ─────────────────────────────────────────
 const $  = id => document.getElementById(id);
 const show = id => $(id) && ($(id).style.display = 'block');
@@ -991,7 +802,7 @@ const REGIONS = {
 };
 
 // ─── STATE ────────────────────────────────────────────────
-let mainType = null, regionCode = null, subCode = null, currentFilter = 'all';
+let mainType = null, regionCode = null, subCode = null;
 let photoDataUrl = null, editPhotoDataUrl = null;
 let selectedNestId = null, selectedKontrolType = null;
 let selectedIhtimal = null, selectedTur = 'CC';
@@ -1061,13 +872,6 @@ async function flushPending() {
 }
 
 // ─── NAVIGATION ──────────────────────────────────────────
-function showPage(p) {
-  document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
-  $('page-' + p).classList.add('active');
-  $('fab').style.display = p === 'form' ? 'block' : 'none';
-  window.scrollTo(0, 0);
-}
-
 // ─── KONTROL ──────────────────────────────────────────────
 // ID'yi normalize et: "my-7" → "MY-007"
 function normalizeNestId(raw) {
@@ -1789,17 +1593,6 @@ function getAcilisData(dp, p) {
     not:           ($(p+'-not')?.value || '').trim()
   };
 }
-function setAcilisData(dp, p, d) {
-  if (!d) return;
-  setDatePicker(dp+'-date-pick', d.control_date || '');
-  [['dry-height','dry_height'],['wet-height','wet_height'],['diameter','diameter'],
-   ['total-eggs','total_eggs'],['infested','infested'],['empty-shells','empty_shells'],
-   ['unfertilized','unfertilized'],['alive','alive'],['dead-hatch','dead_hatch'],
-   ['early','early'],['middle','middle'],['late','late'],['dead-embryo','dead_embryo']]
-    .forEach(([id,key]) => { const e = $(p+'-'+id); if(e) e.value = d[key] ?? ''; });
-  const notEl = $(p+'-not'); if(notEl) notEl.value = d.not || '';
-}
-
 function cnt(id, delta) {
   const el = $(id);
   const cur = parseInt(el.value) || 0;
@@ -1920,371 +1713,6 @@ function resetForm() {
   window.scrollTo(0, 0);
 }
 
-// ─── ADMIN ────────────────────────────────────────────────
-function adminLogin() {
-  const pw = val('admin-pass');
-  if (pw === ADMIN_PASSWORD) {
-    hide('login-err');
-    $('admin-pass').value = '';
-    showPage('admin');
-    renderAdmin();
-    loadFromSheets(); // Admin girişinde otomatik Sheets'ten güncel veriyi çek
-  } else {
-    show('login-err');
-  }
-}
-
-function adminLogout() { showPage('form'); }
-
-function setFilter(f, btn) {
-  currentFilter = f;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderRecords();
-}
-
-function renderAdmin() { renderStats(); renderRecords(); }
-
-async function loadFromSheets() {
-  const btn = $('sheets-btn');
-  if (btn) { btn.textContent = '⏳ Yükleniyor...'; btn.disabled = true; }
-  $('admin-subtitle').textContent = 'Sheets\'ten güncel veri alınıyor...';
-  let loaded = false;
-  try {
-    const res  = await fetch(GS_URL + '?action=all&t=' + Date.now(), { method: 'GET', cache: 'no-store' });
-    const json = await res.json();
-    if (!json.ok || !Array.isArray(json.records)) {
-      $('admin-subtitle').textContent = 'Sheets\'e bağlanılamadı — yerel veri gösteriliyor.';
-      if (btn) { btn.textContent = '🔄 Yenile'; btn.disabled = false; }
-      renderAdmin();
-      return;
-    }
-
-    const sheetsRecords = json.records;
-    const sheetsIds = new Set(sheetsRecords.map(r => r.id));
-    const localOnly = loadData().filter(r => !sheetsIds.has(r.id));
-
-    const localById = {};
-    loadData().forEach(r => { localById[r.id] = r; });
-    sheetsRecords.forEach(r => {
-      if (!r.photo && localById[r.id]?.photo) r.photo = localById[r.id].photo;
-    });
-
-    const merged = [...sheetsRecords, ...localOnly];
-    saveData(merged);
-    loaded = true;
-    $('admin-subtitle').textContent =
-      `${sheetsRecords.length} kayıt Sheets'ten yüklendi` +
-      (localOnly.length ? ` · ${localOnly.length} yerel (gönderilmemiş)` : '');
-  } catch(e) {
-    $('admin-subtitle').textContent = 'Bağlantı hatası — yerel veri gösteriliyor.';
-  }
-  // Render fetch'ten ayrı — render hatası bağlantı hatası gibi görünmesin
-  try { renderAdmin(); } catch(e) { console.error('Render hatası:', e); }
-  if (btn) { btn.textContent = '🔄 Yenile'; btn.disabled = false; }
-}
-
-function renderStats() {
-  const data = loadData();
-  $('admin-stats').innerHTML = [
-    { num: data.length, lbl: 'Toplam' },
-    { num: data.filter(r => r.mainType === 'yuva').length, lbl: 'Yuva' },
-    { num: data.filter(r => r.mainType === 'iz').length,   lbl: 'İz'   }
-  ].map(s => `<div class="stat"><div class="stat-num">${s.num}</div><div class="stat-lbl">${s.lbl}</div></div>`).join('');
-}
-
-function renderRecords() {
-  const data     = loadData();
-  const filtered = currentFilter === 'all'
-    ? data
-    : data.filter(r => r.subCode === currentFilter);
-  const el       = $('records-list');
-
-  if (!filtered.length) {
-    el.innerHTML = `<div class="empty-state"><span class="empty-icon">🔍</span>Kayıt bulunamadı.</div>`;
-    return;
-  }
-
-  // Bölge + sayı ile düzgün sırala (en büyük numara en üstte)
-  function parseId(id) {
-    const m = (id || '').match(/^([A-Z]+)-?(\d+)$/i);
-    if (!m) return { prefix: id || '', num: 0 };
-    return { prefix: m[1].toUpperCase(), num: parseInt(m[2], 10) };
-  }
-  const sorted = [...filtered].sort((a, b) => {
-    const pa = parseId(a.id), pb = parseId(b.id);
-    if (pa.prefix !== pb.prefix) return pa.prefix.localeCompare(pb.prefix);
-    return pb.num - pa.num; // büyükten küçüğe
-  });
-
-  el.innerHTML = sorted.map(r => `
-    <div class="rec-card">
-      <div class="rc-top">
-        <div>
-          <div class="rc-id">${r.id}</div>
-          <div class="rc-meta">${fmtDate(r.date)} · ${r.observer}</div>
-        </div>
-        <div style="display:flex;gap:6px;align-items:center">
-          <button class="btn-sm" onclick="openEditModal('${r.id}')" title="Düzenle">✏️</button>
-        </div>
-      </div>
-      <div class="rc-grid">
-          <div><div class="rcf-lbl">Bölge</div><div class="rcf-val">${r.bolge}</div></div>
-          ${r.tur && r.tur !== 'CC' ? `<div><div class="rcf-lbl">Tür</div><div class="rcf-val">${r.tur}</div></div>` : ''}
-          ${r.total_dist != null ? `<div><div class="rcf-lbl">Denize Toplam</div><div class="rcf-val">${r.total_dist} m</div></div>` : ''}
-          ${r.altered ? `<div style="grid-column:1/-1"><div class="rcf-lbl">⚠️ Yuva Taşındı</div><div class="rcf-val" style="font-weight:400;font-size:13px">${r.alt_date ? fmtDate(r.alt_date)+' · ' : ''}${(typeof r.alt_lat === 'number' && typeof r.alt_lng === 'number') ? r.alt_lat.toFixed(5)+', '+r.alt_lng.toFixed(5)+' · ' : ''}${r.alt_total != null ? 'Denize '+r.alt_total+' m' : ''}</div></div>` : ''}
-          ${r.ihtimal != null ? `<div><div class="rcf-lbl">Yuva İhtimali</div><div class="rcf-val">%${r.ihtimal}</div></div>` : ''}
-          ${r.gozlem && (r.gozlem.ses || r.gozlem.gurultu || r.gozlem.cukur) ? `
-            <div style="grid-column:1/-1"><div class="rcf-lbl">Saha Gözlemleri</div>
-            <div class="rcf-val" style="font-weight:400;font-size:13px">
-              ${r.gozlem.ses ? `Işık kirliliği: <b>${r.gozlem.ses === 'evet' ? 'Evet' : 'Hayır'}</b> &nbsp;` : ''}
-              ${r.gozlem.gurultu ? `Gürültü: <b>${r.gozlem.gurultu === 'evet' ? 'Evet' : 'Hayır'}</b> &nbsp;` : ''}
-              ${r.gozlem.cukur ? `Çukur açık: <b>${r.gozlem.cukur === 'evet' ? 'Evet' : 'Hayır'}</b>` : ''}
-            </div></div>` : ''}
-          ${(typeof r.lat === 'number' && typeof r.lng === 'number') ? `<div><div class="rcf-lbl">Koordinat</div><div class="rcf-val rcf-coord">${r.lat.toFixed(5)}, ${r.lng.toFixed(5)}</div></div>` : ''}
-          ${r.dry  !== null ? `<div><div class="rcf-lbl">Kuru kum</div><div class="rcf-val">${r.dry} m</div></div>` : ''}
-          ${r.semi !== null ? `<div><div class="rcf-lbl">Yarı ıslak</div><div class="rcf-val">${r.semi} m</div></div>` : ''}
-          ${r.wet  !== null ? `<div><div class="rcf-lbl">Islak kum</div><div class="rcf-val">${r.wet} m</div></div>` : ''}
-      </div>
-      ${r.notes ? `<div class="rc-notes">${r.notes}</div>` : ''}
-      ${r.acilis ? `
-        <div class="rc-notes" style="border-color:#d1fae5;background:#f0fdf4;margin-top:8px">
-          <span style="font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#166534">🧪 Kontrol Açılışı</span>
-          ${r.acilis.control_date ? ` · ${fmtDate(r.acilis.control_date)}` : ''}<br>
-          ${r.acilis.dry_height   !== null && r.acilis.dry_height   !== undefined ? `Dry Sand: <b>${r.acilis.dry_height} cm</b> &nbsp;` : ''}
-          ${r.acilis.wet_height   !== null && r.acilis.wet_height   !== undefined ? `Wet Sand: <b>${r.acilis.wet_height} cm</b> &nbsp;` : ''}
-          ${r.acilis.diameter     !== null && r.acilis.diameter     !== undefined ? `Diameter: <b>${r.acilis.diameter} cm</b> &nbsp;` : ''}
-          ${r.acilis.total_eggs   !== null && r.acilis.total_eggs   !== undefined ? `Total Eggs: <b>${r.acilis.total_eggs}</b> &nbsp;` : ''}
-          ${r.acilis.infested     !== null && r.acilis.infested     !== undefined ? `Infested: <b>${r.acilis.infested}</b> &nbsp;` : ''}
-          ${r.acilis.empty_shells !== null && r.acilis.empty_shells !== undefined ? `Empty Shells: <b>${r.acilis.empty_shells}</b> &nbsp;` : ''}
-          ${r.acilis.unfertilized !== null && r.acilis.unfertilized !== undefined ? `Unfertilized: <b>${r.acilis.unfertilized}</b> &nbsp;` : ''}
-          ${r.acilis.alive        !== null && r.acilis.alive        !== undefined ? `Alive Hatchlings: <b>${r.acilis.alive}</b> &nbsp;` : ''}
-          ${r.acilis.dead_hatch   !== null && r.acilis.dead_hatch   !== undefined ? `Dead Hatchlings: <b>${r.acilis.dead_hatch}</b> &nbsp;` : ''}
-          ${r.acilis.early        !== null && r.acilis.early        !== undefined ? `Early: <b>${r.acilis.early}</b> &nbsp;` : ''}
-          ${r.acilis.middle       !== null && r.acilis.middle       !== undefined ? `Middle: <b>${r.acilis.middle}</b> &nbsp;` : ''}
-          ${r.acilis.late         !== null && r.acilis.late         !== undefined ? `Late: <b>${r.acilis.late}</b> &nbsp;` : ''}
-          ${r.acilis.dead_embryo  !== null && r.acilis.dead_embryo  !== undefined ? `Dead Embryos: <b>${r.acilis.dead_embryo}</b>` : ''}
-          ${r.acilis.not ? `<br>${r.acilis.not}` : ''}
-        </div>` : ''}
-      ${(() => {
-        const list = Array.isArray(r.cikis_list) ? r.cikis_list : (r.cikis ? [r.cikis] : []);
-        if (!list.length) return '';
-        const sira = ['1.','2.','3.','4.'];
-        return list.map((ck, i) => `
-          <div class="rc-notes" style="border-color:#bfdbfe;background:#eff6ff;margin-top:8px">
-            <span style="font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#1e40af">🐣 ${sira[i]||(i+1+'.')} Yavru Çıkışı</span>
-            ${ck.cikis_date ? ` · ${fmtDate(ck.cikis_date)}` : ''}${ck.observer ? ` · ${ck.observer}` : ''}<br>
-            ${ck.yavru != null ? `Yavru: <b>${ck.yavru}</b> &nbsp;` : ''}
-            ${ck.denize != null ? `Denize: <b>${ck.denize}</b>` : ''}
-          </div>`).join('');
-      })()}
-      ${r.pred_extent || r.predator || r.pred_eggs !== null ? `
-        <div class="rc-notes" style="border-color:#fde68a;background:#fffbeb;margin-top:8px">
-          <span style="font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#b45309">1. Predasyon</span><br>
-          ${r.pred_extent ? `Kapsam: <b>${r.pred_extent}</b> &nbsp;` : ''}
-          ${r.pred_date ? `Tarih: <b>${fmtDate(r.pred_date)}</b> &nbsp;` : ''}
-          ${r.predator ? `Predatör: <b>${r.predator}</b> &nbsp;` : ''}
-          ${r.pred_side ? `Side: <b>${r.pred_side}</b> &nbsp;` : ''}
-          ${r.pred_eggs !== null ? `Predated eggs: <b>${r.pred_eggs}</b>` : ''}
-          ${r.pred2_extent || r.predator2 || r.pred2_eggs !== null ? `
-            <br><br><span style="font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#b45309">2. Predasyon</span><br>
-            ${r.pred2_extent ? `Kapsam: <b>${r.pred2_extent}</b> &nbsp;` : ''}
-            ${r.pred2_date ? `Tarih: <b>${fmtDate(r.pred2_date)}</b> &nbsp;` : ''}
-            ${r.predator2 ? `Predatör: <b>${r.predator2}</b> &nbsp;` : ''}
-            ${r.pred2_side ? `Side: <b>${r.pred2_side}</b> &nbsp;` : ''}
-            ${r.pred2_eggs !== null ? `Predated eggs: <b>${r.pred2_eggs}</b>` : ''}
-          ` : ''}
-        </div>` : ''}
-      ${r.photo ? `<img class="rc-photo" src="${r.photo}" alt="${r.id} fotoğrafı" loading="lazy">` : ''}
-    </div>
-  `).join('');
-}
-
-// ─── SETTINGS ────────────────────────────────────────────
-
-// ─── EDIT MODAL ───────────────────────────────────────────
-let editCikisList = [];
-
-function renderEditCikis(r) {
-  // cikis_list dizisini normalize et
-  editCikisList = Array.isArray(r.cikis_list)
-    ? r.cikis_list.map(c => ({...c}))
-    : (r.cikis ? [{...r.cikis}] : []);
-
-  const wrap = $('edit-cikis-wrap');
-  const cont = $('edit-cikis-list');
-  if (!editCikisList.length) { wrap.style.display = 'none'; cont.innerHTML = ''; return; }
-  wrap.style.display = 'block';
-
-  const sira = ['1.','2.','3.','4.'];
-  cont.innerHTML = editCikisList.map((c, i) => `
-    <div class="rc-notes" style="border-color:#bfdbfe;background:#eff6ff;margin-bottom:10px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-        <span style="font-weight:700;font-size:12px;color:#1e40af">${sira[i]||(i+1+'.')} Çıkış</span>
-        <button onclick="deleteEditCikis(${i})" style="background:none;border:none;color:var(--red);font-size:13px;cursor:pointer;font-family:var(--font)">✕ Sil</button>
-      </div>
-      <div class="row2" style="margin-bottom:8px">
-        <div class="fg"><label>Çıkış Tarihi</label><input type="date" value="${c.cikis_date||''}" onchange="updateEditCikis(${i},'cikis_date',this.value)"></div>
-        <div class="fg"><label>Yavru Sayısı</label><input type="number" min="0" value="${c.yavru??''}" oninput="updateEditCikis(${i},'yavru',this.value)"></div>
-      </div>
-      <div class="fg"><label>Denize Ulaşan</label><input type="number" min="0" value="${c.denize??''}" oninput="updateEditCikis(${i},'denize',this.value)"></div>
-    </div>
-  `).join('');
-}
-
-function updateEditCikis(i, key, value) {
-  if (!editCikisList[i]) return;
-  if (key === 'yavru' || key === 'denize') {
-    editCikisList[i][key] = value === '' ? null : pn(value);
-  } else {
-    editCikisList[i][key] = value;
-  }
-}
-
-function deleteEditCikis(i) {
-  if (!confirm((i+1) + '. çıkış kaydını silmek istiyor musunuz?')) return;
-  editCikisList.splice(i, 1);
-  // Re-render with current state
-  renderEditCikis({ cikis_list: editCikisList });
-}
-
-function openEditModal(id) {
-  const data = loadData();
-  const r    = data.find(rec => rec.id === id);
-  if (!r) return;
-
-  $('edit-record-id').value      = id;
-  $('edit-id-label').textContent = id;
-  setDatePicker('edit-date-pick', r.date || '');
-  $('edit-observer').value       = r.observer || '';
-  $('edit-lat').value            = r.lat  !== null ? r.lat  : '';
-  $('edit-lng').value            = r.lng  !== null ? r.lng  : '';
-  $('edit-dry').value            = r.dry  !== null ? r.dry  : '';
-  $('edit-semi').value           = r.semi !== null ? r.semi : '';
-  $('edit-wet').value            = r.wet  !== null ? r.wet  : '';
-  $('edit-notes').value          = r.notes || '';
-  $('edit-gps-note').textContent = '';
-
-  // Predasyon — sadece MP kayıtlarında göster
-  const isMP = r.subCode && r.subCode.endsWith('P');
-  $('edit-pred-section-wrap').style.display = isMP ? 'block' : 'none';
-  if (isMP) {
-    $('edit-pred-extent').value = r.pred_extent || '';
-    setDatePicker('edit-pred-date-pick', r.pred_date || '');
-    $('edit-predator').value    = r.predator    || '';
-    $('edit-pred-side').value   = r.pred_side   || '';
-    $('edit-pred-eggs').value   = r.pred_eggs   !== null && r.pred_eggs !== undefined ? r.pred_eggs : '';
-    const hasPred2 = r.pred2_extent || r.predator2 || r.pred2_eggs !== null;
-    const pred2Block = $('edit-pred2-block');
-    pred2Block.style.display = hasPred2 ? 'block' : 'none';
-    $('edit-pred2-icon').textContent = hasPred2 ? '－' : '＋';
-    $('edit-pred2-extent').value = r.pred2_extent || '';
-    setDatePicker('edit-pred2-date-pick', r.pred2_date || '');
-    $('edit-predator2').value    = r.predator2    || '';
-    $('edit-pred2-side').value   = r.pred2_side   || '';
-    $('edit-pred2-eggs').value   = r.pred2_eggs   !== null && r.pred2_eggs !== undefined ? r.pred2_eggs : '';
-  }
-
-  // Kontrol açılışı
-  const hasAcilis = !!r.acilis;
-  $('edit-acilis-wrap').style.display = hasAcilis ? 'block' : 'none';
-  if (hasAcilis) setAcilisData('edit-acilis-control', 'edit-acilis', r.acilis);
-
-  // Yavru çıkışı (çoklu)
-  renderEditCikis(r);
-
-  editPhotoDataUrl = r.photo || null;
-  const prevWrap = $('edit-photo-preview-wrap');
-  const prevImg  = $('edit-photo-preview');
-  if (r.photo) { prevImg.src = r.photo; prevWrap.style.display = 'block'; }
-  else         { prevImg.src = '';      prevWrap.style.display = 'none';  }
-  $('edit-photo-input').value = '';
-
-  $('edit-modal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeEditModal() {
-  $('edit-modal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function toggleEditPred2() {
-  const block = $('edit-pred2-block');
-  const icon  = $('edit-pred2-icon');
-  const open  = block.style.display === 'none';
-  block.style.display = open ? 'block' : 'none';
-  icon.textContent    = open ? '－' : '＋';
-  if (!open) {
-    ['edit-pred2-extent','edit-pred2-date','edit-predator2','edit-pred2-side','edit-pred2-eggs']
-      .forEach(id => $(id).value = '');
-  }
-}
-
-function saveEdit() {
-  const id   = val('edit-record-id');
-  const data = loadData();
-  const idx  = data.findIndex(r => r.id === id);
-  if (idx < 0) return;
-
-  const isMP      = data[idx].subCode && data[idx].subCode.endsWith('P');
-  const pred2Open = $('edit-pred2-block').style.display !== 'none';
-  const hasAcilis = $('edit-acilis-wrap').style.display !== 'none';
-
-  data[idx] = {
-    ...data[idx],
-    date:     getDatePicker('edit-date-pick'),
-    observer: val('edit-observer').trim(),
-    lat:  pn(val('edit-lat')),
-    lng:  pn(val('edit-lng')),
-    dry:  pn(val('edit-dry')),
-    semi: pn(val('edit-semi')),
-    wet:  pn(val('edit-wet')),
-    notes: val('edit-notes').trim(),
-    photo: editPhotoDataUrl || null,
-    // Predasyon
-    pred_extent: isMP ? (val('edit-pred-extent') || null) : null,
-    pred_date:   isMP ? (getDatePicker('edit-pred-date-pick') || null) : null,
-    predator:    isMP ? (val('edit-predator').trim() || null) : null,
-    pred_side:   isMP ? (val('edit-pred-side')   || null) : null,
-    pred_eggs:   isMP ? pn(val('edit-pred-eggs')) : null,
-    pred2_extent: isMP && pred2Open ? (val('edit-pred2-extent') || null) : null,
-    pred2_date:   isMP && pred2Open ? (getDatePicker('edit-pred2-date-pick') || null) : null,
-    predator2:    isMP && pred2Open ? (val('edit-predator2').trim() || null) : null,
-    pred2_side:   isMP && pred2Open ? (val('edit-pred2-side')   || null) : null,
-    pred2_eggs:   isMP && pred2Open ? pn(val('edit-pred2-eggs')) : null,
-    // Kontrol açılışı
-    acilis: hasAcilis ? getAcilisData('edit-acilis-control', 'edit-acilis') : data[idx].acilis || null,
-    // Yavru çıkışı (çoklu liste)
-    cikis_list: editCikisList.length ? editCikisList : null,
-    cikis: null,
-    updated_at: new Date().toISOString()
-  };
-
-  saveData(data);
-  syncToSheets(data[idx]);
-  closeEditModal();
-  renderAdmin();
-}
-
-function onEditPhotoChange(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-  resizeAndStore(file, url => {
-    editPhotoDataUrl = url;
-    $('edit-photo-preview').src = url;
-    show('edit-photo-preview-wrap');
-  });
-}
-function removeEditPhoto() {
-  editPhotoDataUrl = null;
-  $('edit-photo-input').value = '';
-  $('edit-photo-preview').src = '';
-  hide('edit-photo-preview-wrap');
-}
-
-// Modalı ESC ile kapat
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeEditModal(); });
 
 // ─── MOTİVASYON ───────────────────────────────────────────
 const MOTIVASYON = [
@@ -2402,8 +1830,7 @@ function clearDatePicker(containerId) {
 
 // ─── INIT ────────────────────────────────────────────────
 const today = todayStr();
-['f-date-pick','f-pred-date-pick','f-pred2-date-pick',
- 'edit-date-pick','edit-pred-date-pick','edit-pred2-date-pick']
+['f-date-pick','f-pred-date-pick','f-pred2-date-pick']
   .forEach(id => buildDatePicker(id));
 
 setDatePicker('f-date-pick', today);
