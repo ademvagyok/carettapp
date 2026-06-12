@@ -237,12 +237,10 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
         <button class="type-btn" id="btn-yuva" onclick="selectMain('yuva')">
           <span class="tb-icon">🥚</span>
           <div class="tb-title">Yuva</div>
-          <div class="tb-sub">MY · MC · MP</div>
         </button>
         <button class="type-btn" id="btn-iz" onclick="selectMain('iz')">
           <span class="tb-icon">👣</span>
           <div class="tb-title">İz</div>
-          <div class="tb-sub">MZ · OZ · CZ</div>
         </button>
         <button class="type-btn" id="btn-kontrol" onclick="selectMain('kontrol')">
           <span class="tb-icon">🔍</span>
@@ -478,7 +476,9 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
         </div>
         <div class="fg" id="observer-wrap">
           <label for="f-observer">Kaydı Alan</label>
-          <input type="text" id="f-observer" placeholder="Adınız" autocomplete="off">
+          <select id="f-observer">
+            <option value="AK">AK</option>
+          </select>
           <div class="err-msg" id="err-obs">Zorunlu alan.</div>
         </div>
       </div>
@@ -718,7 +718,7 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
       </div>
     </div>
 
-    <button class="btn-primary" onclick="submitForm()">Kaydı Gönder</button>
+    <button class="btn-primary" id="submit-btn" onclick="submitForm()">Kaydı Gönder</button>
   </div>
 
   <div class="success" id="form-success">
@@ -731,7 +731,6 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
   </div>
 </div>
 <script>
-const STORAGE_KEY   = 'caretta_v1';
 const GATE_KEY      = 'caretta_access_week';
 
 // Bu haftanın pazartesisini YYYY-MM-DD olarak döndür
@@ -831,13 +830,12 @@ let selectedIhtimal = null, selectedTur = 'CC';
 let gozlem = { ses: null, gurultu: null, cukur: null };
 let nestAltered = false;
 
-// ─── LOCAL DATA ───────────────────────────────────────────
+// ─── VERİ KATMANI (sadece Sheets) ────────────────────────
 const GS_URL = 'https://script.google.com/macros/s/AKfycbzDMch6eO1pRtoT133sjh-bJLmLBAqem9S2DkILMb7BZYEpee1pP3e2TQgtyrsNEv8Saw/exec';
 
-function loadData()  { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch(e) { return []; } }
-function saveData(d) { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
+// Yuva Bul ile çekilen mevcut yuva burada tutulur (localStorage yerine)
+let currentNest = null;
 
-// GET parametresi olarak gönder — CORS ve redirect sorunu yok
 // Fotoğrafı Drive'a yükle, link döndür
 async function uploadPhoto(id, base64) {
   try {
@@ -852,45 +850,30 @@ async function uploadPhoto(id, base64) {
   }
 }
 
+// Kaydı Sheets'e gönder. Başarılıysa true, ulaşılamazsa false döner.
 async function syncToSheets(record) {
   // 1. ÖNCE metin verisini gönder (fotoğraf base64 ise çıkar — URL'ye sığmaz)
   const recNoPhoto = { ...record };
   if (recNoPhoto.photo && recNoPhoto.photo.startsWith('data:')) recNoPhoto.photo = null;
+  let ok = false;
   try {
-    await fetch(GS_URL + '?data=' + encodeURIComponent(JSON.stringify(recNoPhoto)));
-  } catch(e) { /* çevrimdışı */ }
+    const res = await fetch(GS_URL + '?data=' + encodeURIComponent(JSON.stringify(recNoPhoto)) + '&t=' + Date.now(), { cache: 'no-store' });
+    const json = await res.json();
+    ok = !!json.ok;
+  } catch(e) { ok = false; }
 
   // 2. Fotoğraf varsa Drive'a yükle, linkle birlikte tekrar gönder
-  if (record.photo && record.photo.startsWith('data:')) {
+  if (ok && record.photo && record.photo.startsWith('data:')) {
     const url = await uploadPhoto(record.id, record.photo);
     if (url) {
-      // Yerel kayda linki yaz (base64'ü şişirmemek için)
-      const data = loadData();
-      const i = data.findIndex(x => x.id === record.id);
-      if (i !== -1) { data[i].photo = url; saveData(data); }
-      // Linkli haliyle tekrar gönder (Photo sütunu + _app_data güncellensin)
+      record.photo = url; // currentNest'teki referans da güncellensin
       const recWithUrl = { ...record, photo: url };
       try {
-        await fetch(GS_URL + '?data=' + encodeURIComponent(JSON.stringify(recWithUrl)));
-      } catch(e) { /* sorun değil, foto yerel kayıtta var */ }
+        await fetch(GS_URL + '?data=' + encodeURIComponent(JSON.stringify(recWithUrl)) + '&t=' + Date.now(), { cache: 'no-store' });
+      } catch(e) { /* foto Drive'da var, link sonra eşlenir */ }
     }
   }
-}
-
-async function flushPending() {
-  const pending = JSON.parse(localStorage.getItem('caretta_pending') || '[]');
-  if (!pending.length) return;
-  const sent = [];
-  for (const r of pending) {
-    try {
-      await fetch(GS_URL + '?data=' + encodeURIComponent(JSON.stringify(r)));
-      sent.push(r.id);
-    } catch(e) { break; }
-  }
-  if (sent.length) {
-    localStorage.setItem('caretta_pending',
-      JSON.stringify(pending.filter(r => !sent.includes(r.id))));
-  }
+  return ok;
 }
 
 // ─── NAVIGATION ──────────────────────────────────────────
@@ -918,11 +901,7 @@ async function doSearchNest() {
     return;
   }
 
-  // Önce localStorage'a bak
-  let r = loadData().find(rec => rec.id === id);
-  if (r) { selectNestLocal(r); return; }
-
-  // Yoksa Sheets'ten ara
+  // Sheets'ten ara (internet gerekli)
   btn.textContent = '⏳';
   btn.disabled = true;
   results.innerHTML = `<div class="kontrol-result-item" style="color:var(--text3)">Sheets'te aranıyor...</div>`;
@@ -933,11 +912,9 @@ async function doSearchNest() {
     const rawRes  = await fetch(GS_URL + '?getraw=' + encodeURIComponent(id) + '&t=' + Date.now(), { method: 'GET', cache: 'no-store' });
     const rawJson = await rawRes.json();
     if (rawJson.ok && rawJson.record) {
-      const rec = rawJson.record;
-      const data = loadData();
-      if (!data.find(x => x.id === id)) { data.push(rec); saveData(data); }
+      currentNest = rawJson.record;
       hide('kontrol-results');
-      selectNestLocal(rec);
+      selectNestLocal(currentNest);
       btn.textContent = '🔍 Bul'; btn.disabled = false;
       return;
     }
@@ -946,11 +923,9 @@ async function doSearchNest() {
     const res  = await fetch(GS_URL + '?find=' + encodeURIComponent(id) + '&t=' + Date.now(), { method: 'GET', cache: 'no-store' });
     const json = await res.json();
     if (json.ok && json.found) {
-      const rec = rowToRecord(id, json.row);
-      const data = loadData();
-      if (!data.find(x => x.id === id)) { data.push(rec); saveData(data); }
+      currentNest = rowToRecord(id, json.row);
       hide('kontrol-results');
-      selectNestLocal(rec);
+      selectNestLocal(currentNest);
     } else {
       results.innerHTML = `<div class="kontrol-result-item" style="color:var(--text3)">${id} bulunamadı</div>`;
       results.style.display = 'block';
@@ -1009,11 +984,6 @@ function selectNestLocal(r) {
   hide('err-kontrol');
 }
 
-function selectNest(id) {
-  const r = loadData().find(rec => rec.id === id);
-  if (r) selectNestLocal(r);
-}
-
 function selectKontrolType(t) {
   selectedKontrolType = t;
   document.querySelectorAll('#kontrol-type-grid .region-btn').forEach(b => b.classList.remove('sel'));
@@ -1033,8 +1003,7 @@ function selectKontrolType(t) {
 
   // Ortak not kutusunu göster ve yuvanın mevcut notuyla doldur
   show('kontrol-not-wrap');
-  const rec = loadData().find(r => r.id === selectedNestId);
-  setVal('f-k-not', rec && rec.notes ? rec.notes : '');
+  setVal('f-k-not', currentNest && currentNest.notes ? currentNest.notes : '');
 }
 
 function setYesterday(pickerId) {
@@ -1078,7 +1047,6 @@ function selectMain(t) {
     return;
   }
 
-  const data = loadData();
   const grid = $('region-grid');
 
   if (t === 'yuva') {
@@ -1099,11 +1067,11 @@ function selectMain(t) {
     // Her iz kodu için Sheets'ten güncel sıradaki numarayı çek
     REGIONS.iz.forEach(r => {
       fetchNextNumIz(r.code).then(next => {
-        const n = (next != null)
-          ? next
-          : loadData().filter(rec => rec.subCode === r.code).length + 1;
         const el = $('iznext-' + r.code);
-        if (el) el.textContent = 'Sonraki: ' + r.code + '-' + String(n).padStart(3, '0');
+        if (!el) return;
+        el.textContent = (next != null)
+          ? 'Sonraki: ' + r.code + '-' + String(next).padStart(3, '0')
+          : 'Sonraki: ' + r.code + '-—';
       });
     });
   }
@@ -1222,10 +1190,15 @@ function selectRegion(code) {
 
   // Sheets'ten gerçek sıradaki numarayı çek
   fetchNextNum(code).then(next => {
-    const n = (next != null)
-      ? next
-      : loadData().filter(r => r.regionCode === code && r.mainType === 'yuva').length + 1;
-    updateSubtypeNumbers(region, n);
+    if (next != null) {
+      updateSubtypeNumbers(region, next);
+    } else {
+      // İnternet yok / Sheets'e ulaşılamadı — numara gösterilemiyor
+      region.subtypes.forEach(st => {
+        const el = $('next-' + st.code);
+        if (el) el.textContent = st.code + '-—';
+      });
+    }
   });
 }
 
@@ -1414,35 +1387,35 @@ async function submitForm() {
 }
 
 // ─── Yuva Bul'dan kontrol/çıkış/predasyon ekleme ───────────
-function submitKontrol() {
+async function submitKontrol() {
   let ok = true;
   if (!selectedNestId) { show('err-kontrol'); ok = false; }
   if (!selectedKontrolType) { show('err-ktype'); ok = false; }
   if (!ok) return;
+  if (!currentNest || currentNest.id !== selectedNestId) {
+    alert('Yuva bilgisi kaybolmuş. Lütfen yuvayı tekrar bulun.');
+    return;
+  }
 
-  const data = loadData();
-  const idx  = data.findIndex(r => r.id === selectedNestId);
-  if (idx < 0) return;
-
+  const rec = currentNest;
   const typeLabel = selectedKontrolType === 'acilis' ? 'Kontrol Açılışı'
                   : selectedKontrolType === 'cikis'  ? 'Yavru Çıkışı' : 'Predasyon';
 
   if (selectedKontrolType === 'acilis') {
-    data[idx].acilis = getAcilisData('f-k-control', 'f-k');
+    rec.acilis = getAcilisData('f-k-control', 'f-k');
 
   } else if (selectedKontrolType === 'cikis') {
-    if (!Array.isArray(data[idx].cikis_list)) {
-      data[idx].cikis_list = data[idx].cikis ? [data[idx].cikis] : [];
-      delete data[idx].cikis;
+    if (!Array.isArray(rec.cikis_list)) {
+      rec.cikis_list = rec.cikis ? [rec.cikis] : [];
+      delete rec.cikis;
     }
-    if (data[idx].cikis_list.length >= 4) {
+    if (rec.cikis_list.length >= 4) {
       alert('Bu yuva için en fazla 4 çıkış kaydı girilebilir.');
       return;
     }
-    data[idx].cikis_list.push(buildCikisEntry('f-k', 'Kontrol'));
+    rec.cikis_list.push(buildCikisEntry('f-k', 'Kontrol'));
 
   } else if (selectedKontrolType === 'pred') {
-    // Predasyonu yuvanın asıl predasyon alanlarına yaz (Sheets ile uyumlu)
     const p = {
       extent:   val('f-k-pred-extent') || null,
       date:     getDatePicker('f-k-pred-date-pick') || null,
@@ -1450,28 +1423,35 @@ function submitKontrol() {
       side:     val('f-k-pred-side') || null,
       eggs:     pn(val('f-k-pred-eggs'))
     };
-    if (!data[idx].pred_extent && !data[idx].predator && data[idx].pred_eggs == null) {
-      data[idx].pred_extent = p.extent; data[idx].pred_date = p.date;
-      data[idx].predator = p.predator; data[idx].pred_side = p.side; data[idx].pred_eggs = p.eggs;
-    } else if (!data[idx].pred2_extent && !data[idx].predator2 && data[idx].pred2_eggs == null) {
-      data[idx].pred2_extent = p.extent; data[idx].pred2_date = p.date;
-      data[idx].predator2 = p.predator; data[idx].pred2_side = p.side; data[idx].pred2_eggs = p.eggs;
+    if (!rec.pred_extent && !rec.predator && rec.pred_eggs == null) {
+      rec.pred_extent = p.extent; rec.pred_date = p.date;
+      rec.predator = p.predator; rec.pred_side = p.side; rec.pred_eggs = p.eggs;
+    } else if (!rec.pred2_extent && !rec.predator2 && rec.pred2_eggs == null) {
+      rec.pred2_extent = p.extent; rec.pred2_date = p.date;
+      rec.predator2 = p.predator; rec.pred2_side = p.side; rec.pred2_eggs = p.eggs;
     } else {
-      if (!data[idx].kontrol_pred) data[idx].kontrol_pred = [];
-      data[idx].kontrol_pred.push(p);
+      if (!rec.kontrol_pred) rec.kontrol_pred = [];
+      rec.kontrol_pred.push(p);
     }
   }
 
   // Ortak not kutusu — yuvanın notunu güncelle
-  data[idx].notes = val('f-k-not').trim();
+  rec.notes = val('f-k-not').trim();
+  rec.updated_at = new Date().toISOString();
 
-  data[idx].updated_at = new Date().toISOString();
-  saveData(data);
-  syncToSheets(data[idx]);
+  // Sheets'e gönder — başarısızsa uyar, başarı ekranı gösterme
+  const btn = $('submit-btn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Gönderiliyor...'; }
+  const sent = await syncToSheets(rec);
+  if (btn) { btn.disabled = false; btn.textContent = 'Kaydı Gönder'; }
+  if (!sent) {
+    alert('⚠️ İnternet yok veya Sheets\'e ulaşılamadı.\nKayıt gönderilemedi. Bağlantıyı kontrol edip tekrar deneyin.');
+    return;
+  }
 
   let detail = selectedNestId + ' — ' + typeLabel + ' bilgileri eklendi.';
-  if (selectedKontrolType === 'cikis' && Array.isArray(data[idx].cikis_list)) {
-    detail = selectedNestId + ' — ' + data[idx].cikis_list.length + '. çıkış kaydedildi.';
+  if (selectedKontrolType === 'cikis' && Array.isArray(rec.cikis_list)) {
+    detail = selectedNestId + ' — ' + rec.cikis_list.length + '. çıkış kaydedildi.';
   }
   showSuccess(selectedNestId, detail);
 }
@@ -1490,20 +1470,20 @@ async function submitNew() {
   if (!obs) { show('err-obs'); ok = false; } else { hide('err-obs'); }
   if (!ok) return;
 
-  const data = loadData();
+  const btn = $('submit-btn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Numara alınıyor...'; }
 
-  // Numarayı Sheets'ten al (çakışmayı önler). Yuva: bölge bazında, İz: kod bazında.
-  let regionCount;
-  if (mainType === 'yuva') {
-    const sheetsNext = await fetchNextNum(regionCode);
-    const localNext  = data.filter(r => r.regionCode === regionCode && r.mainType === 'yuva').length + 1;
-    regionCount = (sheetsNext != null) ? Math.max(sheetsNext, localNext) : localNext;
-  } else {
-    const sheetsNext = await fetchNextNumIz(subCode);
-    const localNext  = data.filter(r => r.subCode === subCode).length + 1;
-    regionCount = (sheetsNext != null) ? Math.max(sheetsNext, localNext) : localNext;
+  // Numarayı SADECE Sheets'ten al. Ulaşılamazsa kaydı iptal et, uyar.
+  const sheetsNext = (mainType === 'yuva')
+    ? await fetchNextNum(regionCode)
+    : await fetchNextNumIz(subCode);
+
+  if (sheetsNext == null) {
+    if (btn) { btn.disabled = false; btn.textContent = 'Kaydı Gönder'; }
+    alert('⚠️ İnternet yok veya Sheets\'e ulaşılamadı.\nNumara alınamadığı için kayıt yapılamıyor. Bağlantıyı kontrol edip tekrar deneyin.');
+    return;
   }
-  const id = subCode + '-' + String(regionCount).padStart(3, '0');
+  const id = subCode + '-' + String(sheetsNext).padStart(3, '0');
 
   // Tam ad (yuva iç içe, iz düz yapı)
   let fullName = subCode;
@@ -1562,9 +1542,13 @@ async function submitNew() {
     created_at: new Date().toISOString()
   };
 
-  data.push(record);
-  saveData(data);
-  syncToSheets(record);
+  // Sheets'e gönder — başarısızsa uyar, başarı ekranı gösterme
+  const sent = await syncToSheets(record);
+  if (btn) { btn.disabled = false; btn.textContent = 'Kaydı Gönder'; }
+  if (!sent) {
+    alert('⚠️ Kayıt Sheets\'e gönderilemedi.\nNumara (' + id + ') alındı ama veri yazılamadı. Bağlantıyı kontrol edip tekrar deneyin.');
+    return;
+  }
   showSuccess(id, fullName + ' kaydedildi.');
 }
 
@@ -1722,7 +1706,7 @@ function resetForm() {
   hide('kontrol-section');
   if ($('cikis-section')) hide('cikis-section');
   freezeMainDate(false);
-  ['f-dry','f-semi','f-wet','f-lat','f-lng','f-notes','f-observer',
+  ['f-dry','f-semi','f-wet','f-lat','f-lng','f-notes',
    'f-k-dry-height','f-k-wet-height','f-k-diameter','f-k-total-eggs','f-k-infested',
    'f-k-empty-shells','f-k-unfertilized','f-k-alive','f-k-dead-hatch',
    'f-k-early','f-k-middle','f-k-late','f-k-dead-embryo','f-k-not',
@@ -1876,9 +1860,6 @@ setDatePicker('f-date-pick', today);
       list.map(o => `<option value="${o}">${o}</option>`).join('');
   });
 })();
-
-// Çevrimdışıyken biriken kayıtları gönder
-flushPending();
 </script>
 </body>
 </html>
