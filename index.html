@@ -788,26 +788,38 @@ const LAST_SYNC_KEY = 'caretta_last_sync';
 
 const REGIONS = {
   yuva: [
-    { code:'M', label:'Mamure',   subtypes:[
+    { code:'M', label:'Mamure', subtypes:[
       { code:'MY', label:'Yuva',      full:'Mamure Yuva'      },
       { code:'MC', label:'Çıkış',     full:'Mamure Çıkış'     },
       { code:'MP', label:'Predasyon', full:'Mamure Predasyon' }
     ]},
-    { code:'O', label:'Örenler',  subtypes:[
-      { code:'OY', label:'Yuva',      full:'Örenler Yuva'      },
-      { code:'OC', label:'Çıkış',     full:'Örenler Çıkış'     },
-      { code:'OP', label:'Predasyon', full:'Örenler Predasyon' }
+    { code:'İ', label:'İskele', subtypes:[
+      { code:'İY', label:'Yuva',      full:'İskele Yuva'      },
+      { code:'İC', label:'Çıkış',     full:'İskele Çıkış'     },
+      { code:'İP', label:'Predasyon', full:'İskele Predasyon' }
     ]},
     { code:'C', label:'Cerenler', subtypes:[
       { code:'CY', label:'Yuva',      full:'Cerenler Yuva'      },
       { code:'CC', label:'Çıkış',     full:'Cerenler Çıkış'     },
       { code:'CP', label:'Predasyon', full:'Cerenler Predasyon' }
+    ]},
+    { code:'S', label:'Sultan Suyu', subtypes:[
+      { code:'SY', label:'Yuva',      full:'Sultan Suyu Yuva'      },
+      { code:'SC', label:'Çıkış',     full:'Sultan Suyu Çıkış'     },
+      { code:'SP', label:'Predasyon', full:'Sultan Suyu Predasyon' }
+    ]},
+    { code:'O', label:'Ören', subtypes:[
+      { code:'OY', label:'Yuva',      full:'Ören Yuva'      },
+      { code:'OC', label:'Çıkış',     full:'Ören Çıkış'     },
+      { code:'OP', label:'Predasyon', full:'Ören Predasyon' }
     ]}
   ],
   iz: [
-    { code:'MZ', label:'Mamure',   full:'Mamure İz'   },
-    { code:'OZ', label:'Örenler',  full:'Örenler İz'  },
-    { code:'CZ', label:'Cerenler', full:'Cerenler İz' }
+    { code:'MZ', label:'Mamure',      full:'Mamure İz'      },
+    { code:'İZ', label:'İskele',      full:'İskele İz'      },
+    { code:'CZ', label:'Cerenler',    full:'Cerenler İz'    },
+    { code:'SZ', label:'Sultan Suyu', full:'Sultan Suyu İz' },
+    { code:'OZ', label:'Ören',        full:'Ören İz'        }
   ]
 };
 
@@ -885,8 +897,9 @@ async function flushPending() {
 // ─── KONTROL ──────────────────────────────────────────────
 // ID'yi normalize et: "my-7" → "MY-007"
 function normalizeNestId(raw) {
-  const v = raw.trim().toUpperCase().replace(/\s/g, '');
-  const m = v.match(/^([A-Z]{2})-?(\d+)$/);
+  // Türkçe büyütme: küçük 'i' → 'İ' (İskele kodları İY/İC/İP/İZ için)
+  const v = raw.trim().replace(/\s/g, '').toLocaleUpperCase('tr-TR');
+  const m = v.match(/^([A-ZİÇŞĞÜÖ]{2})-?(\d+)$/);
   if (!m) return null;
   return m[1] + '-' + String(parseInt(m[2], 10)).padStart(3, '0');
 }
@@ -952,15 +965,21 @@ async function doSearchNest() {
 
 // Sheets satırını uygulama kaydına çevir (yuva)
 function rowToRecord(id, row) {
-  const code = id.substring(0, 2);
-  const regMap = { MY:'M', OY:'O', CY:'C' };
-  const bolgeMap = { MY:'Mamure Yuva', OY:'Örenler Yuva', CY:'Cerenler Yuva' };
+  const code = id.substring(0, 2);          // MY, İC, SP, OZ...
+  const regionCode = code.charAt(0);        // M, İ, C, S, O
+  // REGIONS'tan tam adı bul
+  let bolge = '';
+  const reg = REGIONS.yuva.find(r => r.code === regionCode);
+  if (reg) {
+    const st = reg.subtypes.find(s => s.code === code);
+    bolge = st ? st.full : reg.label;
+  }
   return {
     id: id,
     mainType: 'yuva',
     subCode: code,
-    regionCode: regMap[code] || 'M',
-    bolge: bolgeMap[code] || '',
+    regionCode: regionCode,
+    bolge: bolge,
     tur: 'CC',
     date: row[3] || '',
     lat: parseFloat(row[5]) || null,
