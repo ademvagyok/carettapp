@@ -1394,15 +1394,8 @@ function onGpsReading(pos) {
     // Henüz minimum süre dolmadı — ölçmeye devam
     s.note.innerHTML = `${qual} Ölçülüyor... ±${shownAcc.toFixed(1)} m · ${n} okuma · ${secLeft} sn`;
   } else {
-    // Minimum süre doldu — hedefe ulaştıysa otomatik bitir, yoksa onay sun
-    if (avgAcc != null && avgAcc <= GPS_TARGET_ACC) {
-      finishGPS(false);
-    } else {
-      // Hedefe ulaşılamadı ama süre doldu — kullanıcıya "yeterli, kaydet" seçeneği
-      s.note.innerHTML = `${qual} ±${shownAcc.toFixed(1)} m · ${n} okuma<br>`
-        + `<span style="font-size:12px;color:var(--text2)">Daha iyisi için bekleyin ya da </span>`
-        + `<button onclick="finishGPS(false)" style="font-size:12px;padding:4px 10px;border:1px solid var(--blue);background:var(--blue);color:#fff;border-radius:6px;cursor:pointer;margin-top:4px">Bu konumu kaydet</button>`;
-    }
+    // Minimum süre doldu — eldeki en iyi ortalamayla otomatik bitir
+    finishGPS(false);
   }
 }
 
