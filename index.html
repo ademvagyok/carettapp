@@ -1211,6 +1211,10 @@ function selectRegion(code) {
   show('subtype-section');
   hide('err-subtype');
 
+  // İlk alt tipi (Yuva) otomatik seç — CC'nin otomatik seçili gelmesi gibi
+  const firstSub = region.subtypes[0];
+  if (firstSub) selectSubtype(firstSub.code);
+
   // Sheets'ten gerçek sıradaki numarayı çek (ve sakla)
   cachedNum = null; cachedNumKey = code;
   fetchNextNum(code).then(next => {
@@ -1338,17 +1342,25 @@ function startGPS(latId, lngId, btnId, noteId, onDone) {
   // Önceki ölçümü temizle
   if (_gpsWatchId !== null) { navigator.geolocation.clearWatch(_gpsWatchId); _gpsWatchId = null; }
 
+  // Aynı alan için daha önce okuma toplandıysa, üstüne ekle (iyileştir).
+  // Farklı alan veya ilk ölçümse sıfırdan başla.
+  const continuing = _gpsState && _gpsState.latId === latId && _gpsState.samples && _gpsState.samples.length > 0;
+  const prevSamples = continuing ? _gpsState.samples : [];
+  const prevBest    = continuing ? _gpsState.bestSingle : Infinity;
+
   // Ölçüm durumu
   _gpsState = {
     latId, lngId, note, btn, onDone,
-    samples: [],            // {lat, lng, acc} — iyi okumalar
-    bestSingle: Infinity,   // en iyi tek okuma doğruluğu
+    samples: prevSamples,          // önceki okumalar korunur (iyileştirme)
+    bestSingle: prevBest,
     startTime: Date.now(),
     locked: false
   };
 
-  if (btn) { btn.textContent = '📡 Ölçülüyor...'; btn.disabled = true; }
-  note.innerHTML = '📡 GPS sinyali aranıyor...';
+  if (btn) { btn.textContent = continuing ? '📡 İyileştiriliyor...' : '📡 Ölçülüyor...'; btn.disabled = true; }
+  note.innerHTML = continuing
+    ? `📡 İyileştiriliyor... (${prevSamples.length} okuma üzerine ekleniyor)`
+    : '📡 GPS sinyali aranıyor...';
 
   _gpsWatchId = navigator.geolocation.watchPosition(onGpsReading, onGpsError, {
     enableHighAccuracy: true, maximumAge: 0, timeout: GPS_MAX_MS
@@ -1429,7 +1441,7 @@ function finishGPS(timedOut) {
   const shownAcc = avgAcc != null ? avgAcc : s.bestSingle;
   const hasCoord = !!$(s.latId).value;
 
-  if (s.btn) { s.btn.textContent = '🔄 Yeniden Ölç'; s.btn.disabled = false; }
+  if (s.btn) { s.btn.textContent = '🎯 İyileştir'; s.btn.disabled = false; }
 
   if (!hasCoord) {
     s.note.innerHTML = '⚠️ Konum alınamadı. Açık alanda tekrar deneyin.';
@@ -1811,6 +1823,9 @@ function resetForm() {
    'f-k-pred-extent','f-k-predator','f-k-pred-side','f-k-pred-eggs']
     .forEach(id => { const el = $(id); if(el) el.value = ''; });
   setDatePicker('f-date-pick', todayStr());
+  // GPS durumunu tamamen sıfırla — yeni kayıt taze ölçüm yapsın
+  if (_gpsWatchId !== null) { navigator.geolocation.clearWatch(_gpsWatchId); _gpsWatchId = null; }
+  _gpsState = null;
   $('gps-note').textContent = 'Otomatik doldurmak için "GPS Al" tuşuna basın.';
   $('gps-btn').textContent  = '📍 GPS Al';
   $('gps-btn').disabled     = false;
