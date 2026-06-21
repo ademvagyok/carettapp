@@ -1324,8 +1324,8 @@ function freezeMainDate(frozen) {
 
 // ─── GPS (yüksek doğruluk: ortalama + sabırlı ölçüm + onay) ─
 const GPS_TARGET_ACC = 4;     // ±4 m hedef
-const GPS_MIN_MS     = 20000; // en az 20 sn ölçüm (erken durmaz)
-const GPS_MAX_MS     = 45000; // en fazla 45 sn (sonra eldeki en iyiyle biter)
+const GPS_MIN_MS     = 30000; // en az 30 sn ölçüm (erken durmaz)
+const GPS_MAX_MS     = 60000; // en fazla 60 sn (sonra eldeki en iyiyle biter)
 const GPS_GOOD_ACC   = 10;    // ortalamaya sadece ±10 m'den iyi okumalar katılır
 let _gpsWatchId = null;
 let _gpsState   = null;       // aktif ölçüm durumu
@@ -1391,8 +1391,9 @@ function onGpsReading(pos) {
   const n = s.samples.length;
 
   if (elapsed < GPS_MIN_MS) {
-    // Henüz minimum süre dolmadı — ölçmeye devam
-    s.note.innerHTML = `${qual} Ölçülüyor... ±${shownAcc.toFixed(1)} m · ${n} okuma · ${secLeft} sn`;
+    // Henüz minimum süre dolmadı — ölçmeye devam, durdurma seçeneği sun
+    s.note.innerHTML = `${qual} Ölçülüyor... ±${shownAcc.toFixed(1)} m · ${n} okuma · ${secLeft} sn `
+      + `<button onclick="finishGPS(false)" style="font-size:12px;padding:3px 10px;border:1px solid var(--text3);background:var(--bg2);color:var(--text);border-radius:6px;cursor:pointer;margin-left:6px">■ Durdur</button>`;
   } else {
     // Minimum süre doldu — eldeki en iyi ortalamayla otomatik bitir
     finishGPS(false);
