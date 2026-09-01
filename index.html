@@ -88,7 +88,6 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
 .uunit{position:absolute;right:11px;top:50%;transform:translateY(-50%);font-size:12px;color:var(--text3);pointer-events:none;font-family:'DM Mono',monospace}
 
 /* GPS */
-.gps-wrap{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:end}
 .gps-btn{padding:13px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--bg2);cursor:pointer;color:var(--text);font-size:14px;font-family:var(--font);font-weight:600;white-space:nowrap;-webkit-tap-highlight-color:transparent}
 .gps-btn:disabled{opacity:.5}
 
@@ -107,26 +106,6 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
 .s-id{font-family:'DM Mono',monospace;font-size:26px;font-weight:500;color:var(--blue);background:var(--blue-bg);border:1.5px solid var(--blue-light);padding:9px 28px;border-radius:var(--radius-sm);display:inline-block;margin:10px 0 16px}
 .s-sub{font-size:14px;color:var(--text2);margin-bottom:2rem;line-height:1.5}
 
-/* SYNC STATUS BAR */
-/* FAB */
-
-/* LOGIN */
-
-/* ADMIN HEADER */
-
-.admin-top h2{font-size:20px;font-weight:700;letter-spacing:-.02em}
-.admin-top p{font-size:13px;color:var(--text3);margin-top:2px}
-
-/* STATS */
-
-/* FILTERS */
-
-/* RECORD CARDS */
-
-/* SETTINGS */
-
-.info-box strong{display:block;font-weight:700;margin-bottom:4px}
-.info-box ol{padding-left:16px}
 
 /* KONTROL */
 .kontrol-search{position:relative}
@@ -143,18 +122,6 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
 .pred-section{border:1.5px solid #fde68a;border-radius:var(--radius-sm);padding:1rem;background:#fffbeb}
 @media(prefers-color-scheme:dark){.pred-section{background:#1c1200;border-color:#78350f}}
 
-/* PHOTO UPLOAD */
-
-.photo-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.photo-area 
-.photo-area 
-.photo-area 
-
-.photo-preview-wrap img{width:100%;max-height:220px;object-fit:cover;border-radius:var(--radius-sm);display:block}
-
-/* EDIT MODAL */
-
-.modal-actions 
 
 /* TÜR TOGGLE */
 .tur-btn{padding:8px 18px;border:1.5px solid var(--border);border-radius:20px;background:var(--bg2);cursor:pointer;font-size:14px;font-weight:700;font-family:'DM Mono',monospace;color:var(--text2);-webkit-tap-highlight-color:transparent;letter-spacing:.03em}
@@ -183,8 +150,6 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
 .date-num:focus{outline:none;border-color:var(--blue);background:var(--bg)}
 .date-year{color:var(--text2);font-weight:600}
 
-.btn-yesterday{padding:13px 10px;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--bg2);cursor:pointer;font-size:14px;font-weight:700;font-family:'DM Mono',monospace;color:var(--text2);white-space:nowrap;-webkit-tap-highlight-color:transparent;flex-shrink:0}
-.btn-yesterday:active{background:var(--bg3)}
 
 /* DARK MODE */
 @media(prefers-color-scheme:dark){
@@ -725,7 +690,7 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
           <label>Taşıma Tarihi</label>
           <div class="date-pick" id="alt-date-pick"></div>
         </div>
-        <div class="gps-wrap" style="margin-bottom:6px">
+        <div class="row2" style="margin-bottom:6px">
           <div class="fg">
             <label>Enlem (Yeni)</label>
             <input type="number" id="alt-lat" placeholder="36.000000" step="0.000001" inputmode="decimal">
@@ -818,8 +783,6 @@ const hide = id => $(id) && ($(id).style.display = 'none');
 const val  = id => $(id)?.value ?? '';
 const setVal = (id, v) => { const e = $(id); if(e) e.value = v ?? ''; };
 
-const LAST_SYNC_KEY = 'caretta_last_sync';
-
 const REGIONS = {
   yuva: [
     { code:'M', label:'Mamure', subtypes:[
@@ -884,7 +847,6 @@ async function syncToSheets(record) {
   } catch(e) { return false; }
 }
 
-// ─── NAVIGATION ──────────────────────────────────────────
 // ─── KONTROL ──────────────────────────────────────────────
 // ID'yi normalize et: "my-7" → "MY-007"
 function normalizeNestId(raw) {
@@ -1316,16 +1278,9 @@ function freezeMainDate(frozen) {
     s.disabled = frozen;
     s.style.opacity = frozen ? '0.4' : '1';
   });
-  const block = $('tarih-block');
-  if (block) block.querySelectorAll('.btn-yesterday').forEach(b => {
-    b.disabled = frozen; b.style.opacity = frozen ? '0.4' : '1';
-  });
   const note = $('main-date-note');
   if (note) note.style.display = frozen ? 'block' : 'none';
 }
-
-// ─── ACILIS FIELD HELPERS ────────────────────────────────
-const ACILIS_FIELDS = ['dry-height','wet-height','diameter','total-eggs','infested','empty-shells','unfertilized','alive','dead-hatch','early','middle','late','dead-embryo','not'];
 
 async function submitForm() {
   if (!mainType) { show('err-main'); return; }
