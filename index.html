@@ -91,17 +91,13 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
 .gps-wrap{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:end}
 .gps-btn{padding:13px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--bg2);cursor:pointer;color:var(--text);font-size:14px;font-family:var(--font);font-weight:600;white-space:nowrap;-webkit-tap-highlight-color:transparent}
 .gps-btn:disabled{opacity:.5}
-.gps-note{font-size:11px;color:var(--text3);margin-top:6px;line-height:1.4}
+
 .err-msg{font-size:12px;color:var(--red);margin-top:5px;display:none;font-weight:500}
 
 /* BUTTONS */
 .btn-primary{width:100%;padding:16px;background:var(--blue);color:#fff;border:none;border-radius:var(--radius);font-size:17px;font-weight:700;cursor:pointer;font-family:var(--font);letter-spacing:-.01em;-webkit-tap-highlight-color:transparent}
 .btn-primary:active{opacity:.85}
 .btn-secondary{padding:13px 24px;border:1.5px solid var(--border);border-radius:var(--radius);background:var(--bg);cursor:pointer;font-size:15px;font-weight:600;color:var(--text);font-family:var(--font);-webkit-tap-highlight-color:transparent}
-.btn-sm{padding:8px 13px;border:1.5px solid var(--border);border-radius:var(--radius-xs);background:var(--bg2);cursor:pointer;font-size:13px;font-weight:600;font-family:var(--font);color:var(--text);-webkit-tap-highlight-color:transparent;white-space:nowrap}
-.btn-sm.blue{background:var(--blue-bg);border-color:var(--blue-light);color:var(--blue)}
-.btn-sm.green{background:var(--green-bg);border-color:var(--green-border);color:var(--green)}
-.btn-sm.danger{background:var(--red-bg);border-color:var(--red-border);color:var(--red)}
 
 /* SUCCESS */
 .success{display:none;text-align:center;padding:4rem 1.25rem 2rem;flex-direction:column;align-items:center;justify-content:center;position:fixed;inset:0;background:var(--bg);z-index:150;overflow-y:auto}
@@ -117,24 +113,21 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
 /* LOGIN */
 
 /* ADMIN HEADER */
-.admin-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.25rem;gap:10px;flex-wrap:wrap}
+
 .admin-top h2{font-size:20px;font-weight:700;letter-spacing:-.02em}
 .admin-top p{font-size:13px;color:var(--text3);margin-top:2px}
 
 /* STATS */
-
-.stat{background:var(--bg2);border-radius:var(--radius-sm);padding:13px;text-align:center;border:1px solid var(--border)}
 
 /* FILTERS */
 
 /* RECORD CARDS */
 
 /* SETTINGS */
-.info-box{background:var(--blue-bg);border:1px solid var(--blue-light);border-radius:var(--radius-xs);padding:12px 14px;font-size:12px;color:var(--blue);line-height:1.7;margin-bottom:1rem}
+
 .info-box strong{display:block;font-weight:700;margin-bottom:4px}
 .info-box ol{padding-left:16px}
-.input-row{display:flex;gap:8px;align-items:flex-end}
-.input-row .fg{flex:1}
+
 /* KONTROL */
 .kontrol-search{position:relative}
 .kontrol-search input{font-size:18px;font-family:'DM Mono',monospace;letter-spacing:.04em}
@@ -151,22 +144,17 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
 @media(prefers-color-scheme:dark){.pred-section{background:#1c1200;border-color:#78350f}}
 
 /* PHOTO UPLOAD */
-.photo-area{border:1.5px dashed var(--border);border-radius:var(--radius-sm);padding:1rem;text-align:center;cursor:pointer;background:var(--bg2);transition:border-color .15s,background .15s;position:relative}
-.photo-area:hover{border-color:var(--blue);background:var(--blue-bg)}
+
 .photo-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.photo-area .pa-icon{font-size:28px;display:block;margin-bottom:6px}
-.photo-area .pa-lbl{font-size:13px;color:var(--text2);font-weight:500}
-.photo-area .pa-sub{font-size:11px;color:var(--text3);margin-top:3px}
-.photo-preview-wrap{margin-top:10px;display:none}
+.photo-area 
+.photo-area 
+.photo-area 
+
 .photo-preview-wrap img{width:100%;max-height:220px;object-fit:cover;border-radius:var(--radius-sm);display:block}
-.photo-remove{margin-top:6px;background:none;border:none;font-size:12px;color:var(--red);cursor:pointer;font-family:var(--font);font-weight:600;padding:0}
 
 /* EDIT MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none;align-items:flex-end;justify-content:center}
-.modal-overlay.open{display:flex}
 
-.modal-actions .btn-primary{flex:1}
-.modal-actions .btn-sm.danger{padding:14px 16px}
+.modal-actions 
 
 /* TÜR TOGGLE */
 .tur-btn{padding:8px 18px;border:1.5px solid var(--border);border-radius:20px;background:var(--bg2);cursor:pointer;font-size:14px;font-weight:700;font-family:'DM Mono',monospace;color:var(--text2);-webkit-tap-highlight-color:transparent;letter-spacing:.03em}
@@ -191,8 +179,10 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
 /* CUSTOM DATE PICKER */
 .date-pick{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
 .date-pick select{padding:13px 6px;font-size:15px;text-align:center}
-.date-y-wrap{display:flex;gap:6px;align-items:flex-end}
-.date-y-wrap .date-pick{flex:1}
+.date-num{padding:13px 6px;font-size:15px;text-align:center;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--bg2);color:var(--text);width:100%}
+.date-num:focus{outline:none;border-color:var(--blue);background:var(--bg)}
+.date-year{color:var(--text2);font-weight:600}
+
 .btn-yesterday{padding:13px 10px;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--bg2);cursor:pointer;font-size:14px;font-weight:700;font-family:'DM Mono',monospace;color:var(--text2);white-space:nowrap;-webkit-tap-highlight-color:transparent;flex-shrink:0}
 .btn-yesterday:active{background:var(--bg3)}
 
@@ -331,83 +321,72 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
 
           <div class="row2" style="margin-bottom:10px">
             <div class="fg">
-              <label>Control Date</label>
-              <div class="date-y-wrap">
-                <div class="date-pick" id="f-k-control-date-pick"></div>
-                <button type="button" class="btn-yesterday" onclick="setDatePicker('f-k-control-date-pick', todayStr())" title="Bugün">T</button>
-                <button type="button" class="btn-yesterday" onclick="setYesterday('f-k-control-date-pick')" title="Dün">Y</button>
-              </div>
+              <label>Tarih (Control Date)</label>
+              <div class="date-pick" id="f-k-control-date-pick"></div>
             </div>
             <div class="fg">
-              <label>Height of Dry Sand (cm)</label>
+              <label>Kuru Kum Yüksekliği (Dry Sand)</label>
               <div class="uw"><input type="number" id="f-k-dry-height" placeholder="0" min="0" step="0.1" inputmode="decimal"><span class="uunit">cm</span></div>
             </div>
           </div>
-
           <div class="row2" style="margin-bottom:10px">
             <div class="fg">
-              <label>Height of Wet Sand (cm)</label>
+              <label>Islak Kum Yüksekliği (Wet Sand)</label>
               <div class="uw"><input type="number" id="f-k-wet-height" placeholder="0" min="0" step="0.1" inputmode="decimal"><span class="uunit">cm</span></div>
             </div>
             <div class="fg">
-              <label>Diameter of Egg Chamber (cm)</label>
+              <label>Çap (Diameter of Egg Chamber)</label>
               <div class="uw"><input type="number" id="f-k-diameter" placeholder="0" min="0" step="0.1" inputmode="decimal"><span class="uunit">cm</span></div>
             </div>
           </div>
-
-          <div class="sec-lbl" style="margin-top:4px"># of Eggs</div>
           <div class="row2" style="margin-bottom:10px">
             <div class="fg">
-              <label>Total Eggs in Nest <span style="font-weight:400;font-size:11px;color:var(--text3)">(otomatik)</span></label>
-              <div class="uw"><input type="number" id="f-k-total-eggs" value="0" readonly style="background:var(--bg3);color:var(--text2);cursor:default"><span class="uunit">#</span></div>
+              <label>Parazitli (Infested Eggs)</label>
+              <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-k-infested',-1)">−</button><input type="number" id="f-k-infested" value="0" min="0" step="1" inputmode="numeric" oninput="calcTotal('f-k')"><button class="cnt-btn" onclick="cnt('f-k-infested',1)">+</button></div>
             </div>
             <div class="fg">
-              <label>Infested Eggs</label>
-              <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-k-infested',-1);calcTotal()">−</button><input type="number" id="f-k-infested" value="0" min="0" step="1" inputmode="numeric" oninput="calcTotal()"><button class="cnt-btn" onclick="cnt('f-k-infested',1);calcTotal()">+</button></div>
-            </div>
-          </div>
-          <div class="row2" style="margin-bottom:10px">
-            <div class="fg">
-              <label>Empty Egg Shells</label>
-              <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-k-empty-shells',-1);calcTotal()">−</button><input type="number" id="f-k-empty-shells" value="0" min="0" step="1" inputmode="numeric" oninput="calcTotal()"><button class="cnt-btn" onclick="cnt('f-k-empty-shells',1);calcTotal()">+</button></div>
-            </div>
-            <div class="fg">
-              <label>Unfertilized Eggs</label>
-              <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-k-unfertilized',-1);calcTotal()">−</button><input type="number" id="f-k-unfertilized" value="0" min="0" step="1" inputmode="numeric" oninput="calcTotal()"><button class="cnt-btn" onclick="cnt('f-k-unfertilized',1);calcTotal()">+</button></div>
-            </div>
-          </div>
-
-          <div class="sec-lbl" style="margin-top:4px"># of Hatchlings</div>
-          <div class="row2" style="margin-bottom:10px">
-            <div class="fg">
-              <label>Alive Hatchlings in Nest</label>
+              <label>Canlı Yavru (Alive Hatchlings)</label>
               <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-k-alive',-1)">−</button><input type="number" id="f-k-alive" value="0" min="0" step="1" inputmode="numeric"><button class="cnt-btn" onclick="cnt('f-k-alive',1)">+</button></div>
             </div>
+          </div>
+          <div class="row2" style="margin-bottom:10px">
             <div class="fg">
-              <label>Dead Hatchlings in Nest</label>
+              <label>Ölü Yavru (Dead Hatchlings)</label>
               <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-k-dead-hatch',-1)">−</button><input type="number" id="f-k-dead-hatch" value="0" min="0" step="1" inputmode="numeric"><button class="cnt-btn" onclick="cnt('f-k-dead-hatch',1)">+</button></div>
             </div>
-          </div>
-
-          <div class="sec-lbl" style="margin-top:4px"># of Embryos</div>
-          <div class="row2" style="margin-bottom:10px">
             <div class="fg">
-              <label>Early Embryos</label>
-              <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-k-early',-1);calcTotal()">−</button><input type="number" id="f-k-early" value="0" min="0" step="1" inputmode="numeric" oninput="calcTotal()"><button class="cnt-btn" onclick="cnt('f-k-early',1);calcTotal()">+</button></div>
-            </div>
-            <div class="fg">
-              <label>Middle Embryos</label>
-              <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-k-middle',-1);calcTotal()">−</button><input type="number" id="f-k-middle" value="0" min="0" step="1" inputmode="numeric" oninput="calcTotal()"><button class="cnt-btn" onclick="cnt('f-k-middle',1);calcTotal()">+</button></div>
+              <label>Boş Kabuk (Empty Egg Shells)</label>
+              <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-k-empty-shells',-1)">−</button><input type="number" id="f-k-empty-shells" value="0" min="0" step="1" inputmode="numeric" oninput="calcTotal('f-k')"><button class="cnt-btn" onclick="cnt('f-k-empty-shells',1)">+</button></div>
             </div>
           </div>
           <div class="row2" style="margin-bottom:10px">
             <div class="fg">
-              <label>Late Embryos</label>
-              <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-k-late',-1);calcTotal()">−</button><input type="number" id="f-k-late" value="0" min="0" step="1" inputmode="numeric" oninput="calcTotal()"><button class="cnt-btn" onclick="cnt('f-k-late',1);calcTotal()">+</button></div>
+              <label>Erken Embriyo (Early Embryos)</label>
+              <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-k-early',-1)">−</button><input type="number" id="f-k-early" value="0" min="0" step="1" inputmode="numeric" oninput="calcTotal('f-k')"><button class="cnt-btn" onclick="cnt('f-k-early',1)">+</button></div>
             </div>
             <div class="fg">
-              <label>Total Dead Embryos</label>
+              <label>Orta Embriyo (Middle Embryos)</label>
+              <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-k-middle',-1)">−</button><input type="number" id="f-k-middle" value="0" min="0" step="1" inputmode="numeric" oninput="calcTotal('f-k')"><button class="cnt-btn" onclick="cnt('f-k-middle',1)">+</button></div>
+            </div>
+          </div>
+          <div class="row2" style="margin-bottom:10px">
+            <div class="fg">
+              <label>Geç Embriyo (Late Embryos)</label>
+              <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-k-late',-1)">−</button><input type="number" id="f-k-late" value="0" min="0" step="1" inputmode="numeric" oninput="calcTotal('f-k')"><button class="cnt-btn" onclick="cnt('f-k-late',1)">+</button></div>
+            </div>
+            <div class="fg">
+              <label>Döllenmemiş (Unfertilized Eggs)</label>
+              <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-k-unfertilized',-1)">−</button><input type="number" id="f-k-unfertilized" value="0" min="0" step="1" inputmode="numeric" oninput="calcTotal('f-k')"><button class="cnt-btn" onclick="cnt('f-k-unfertilized',1)">+</button></div>
+            </div>
+          </div>
+          <div class="row2" style="margin-bottom:10px">
+            <div class="fg">
+              <label>Ölü Embriyo (Total Dead Embryos)</label>
               <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-k-dead-embryo',-1)">−</button><input type="number" id="f-k-dead-embryo" value="0" min="0" step="1" inputmode="numeric"><button class="cnt-btn" onclick="cnt('f-k-dead-embryo',1)">+</button></div>
+            </div>
+            <div class="fg">
+              <label>Toplam Yumurta <span style="font-weight:400;font-size:11px;color:var(--text3)">(otomatik)</span></label>
+              <div class="uw"><input type="number" id="f-k-total-eggs" value="0" readonly style="background:var(--bg3);color:var(--text2);cursor:default"><span class="uunit">#</span></div>
             </div>
           </div>
         </div>
@@ -418,7 +397,7 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
           <div class="row2" style="margin-bottom:10px">
             <div class="fg">
               <label>Çıkış Tarihi</label>
-              <div class="date-y-wrap"><div class="date-pick" id="f-k-cikis-date-pick"></div><button type="button" class="btn-yesterday" onclick="setYesterday('f-k-cikis-date-pick')" title="Dün">Y</button></div>
+              <div class="date-pick" id="f-k-cikis-date-pick"></div>
             </div>
             <div class="fg">
               <label>Yavru Sayısı</label>
@@ -442,7 +421,7 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
               </div>
               <div class="fg">
                 <label>Predasyon Tarihi</label>
-                <div class="date-y-wrap"><div class="date-pick" id="f-k-pred-date-pick"></div><button type="button" class="btn-yesterday" onclick="setYesterday('f-k-pred-date-pick')" title="Dün">Y</button></div>
+                <div class="date-pick" id="f-k-pred-date-pick"></div>
               </div>
             </div>
             <div class="row2" style="margin-bottom:10px">
@@ -484,17 +463,7 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
       <div class="row2">
         <div class="fg">
           <label>Tarih</label>
-          <div class="date-y-wrap">
-            <div class="date-pick" id="f-date-pick"></div>
-            <button type="button" class="btn-yesterday" onclick="setYesterday('f-date-pick')" title="Dün">Y</button>
-          </div>
-        </div>
-        <div class="fg" id="observer-wrap">
-          <label for="f-observer">Kaydı Alan</label>
-          <select id="f-observer">
-            <option value="AK">AK</option>
-          </select>
-          <div class="err-msg" id="err-obs">Zorunlu alan.</div>
+          <div class="date-pick" id="f-date-pick"></div>
         </div>
       </div>
       <div id="main-date-note" style="display:none;font-size:12px;color:var(--text2);margin-top:6px">ℹ️ Çıkış veya predasyonla bulunan yuvada yuvalama tarihi bilinmediği için bu alan boş bırakılır. Sadece çıkış/predasyon tarihi kaydedilir.</div>
@@ -502,8 +471,8 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
     </div><!-- /tarih-block -->
 
     <div class="section" id="gps-section">
-      <div class="sec-lbl">Konum (GPS)</div>
-      <div class="gps-wrap">
+      <div class="sec-lbl">Koordinat</div>
+      <div class="row2">
         <div class="fg">
           <label for="f-lat">Enlem</label>
           <input type="number" id="f-lat" placeholder="36.000000" step="0.000001" inputmode="decimal">
@@ -512,9 +481,7 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
           <label for="f-lng">Boylam</label>
           <input type="number" id="f-lng" placeholder="33.000000" step="0.000001" inputmode="decimal">
         </div>
-        <button class="gps-btn" id="gps-btn" onclick="getGPS()">📍 GPS Al</button>
       </div>
-      <div class="gps-note" id="gps-note">Otomatik doldurmak için "GPS Al" tuşuna basın.</div>
     </div>
 
     <div class="section" id="kum-section">
@@ -531,6 +498,34 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
         <div class="fg">
           <label for="f-wet">Islak kum</label>
           <div class="uw"><input type="text" id="f-wet" placeholder="0.0" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*"><span class="uunit">m</span></div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="section" id="iz-gozlem-section" style="display:none">
+      <div class="sec-lbl">Saha Gözlemleri</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="gozlem-row">
+          <span class="gozlem-lbl">Yuva çukuru açılmış mı?</span>
+          <div class="yesno-wrap">
+            <button class="yesno-btn" id="g-cukur-evet" onclick="setGozlem('cukur','evet')">Evet</button>
+            <button class="yesno-btn" id="g-cukur-hayir" onclick="setGozlem('cukur','hayir')">Hayır</button>
+          </div>
+        </div>
+        <div class="gozlem-row">
+          <span class="gozlem-lbl">Işık kirliliği var mı?</span>
+          <div class="yesno-wrap">
+            <button class="yesno-btn" id="g-ses-evet" onclick="setGozlem('ses','evet')">Evet</button>
+            <button class="yesno-btn" id="g-ses-hayir" onclick="setGozlem('ses','hayir')">Hayır</button>
+          </div>
+        </div>
+        <div class="gozlem-row">
+          <span class="gozlem-lbl">Gürültü kirliliği var mı?</span>
+          <div class="yesno-wrap">
+            <button class="yesno-btn" id="g-gurultu-evet" onclick="setGozlem('gurultu','evet')">Evet</button>
+            <button class="yesno-btn" id="g-gurultu-hayir" onclick="setGozlem('gurultu','hayir')">Hayır</button>
+          </div>
         </div>
       </div>
     </div>
@@ -557,37 +552,92 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
       <div class="err-msg" id="err-ihtimal">Lütfen yuva ihtimalini seçiniz.</div>
     </div>
 
-    <div class="section" id="iz-gozlem-section" style="display:none">
-      <div class="sec-lbl">Saha Gözlemleri</div>
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <div class="gozlem-row">
-          <span class="gozlem-lbl">Işık kirliliği var mı?</span>
-          <div class="yesno-wrap">
-            <button class="yesno-btn" id="g-ses-evet" onclick="setGozlem('ses','evet')">Evet</button>
-            <button class="yesno-btn" id="g-ses-hayir" onclick="setGozlem('ses','hayir')">Hayır</button>
-          </div>
-        </div>
-        <div class="gozlem-row">
-          <span class="gozlem-lbl">Gürültü kirliliği var mı?</span>
-          <div class="yesno-wrap">
-            <button class="yesno-btn" id="g-gurultu-evet" onclick="setGozlem('gurultu','evet')">Evet</button>
-            <button class="yesno-btn" id="g-gurultu-hayir" onclick="setGozlem('gurultu','hayir')">Hayır</button>
-          </div>
-        </div>
-        <div class="gozlem-row">
-          <span class="gozlem-lbl">Yuva çukuru açılmış mı?</span>
-          <div class="yesno-wrap">
-            <button class="yesno-btn" id="g-cukur-evet" onclick="setGozlem('cukur','evet')">Evet</button>
-            <button class="yesno-btn" id="g-cukur-hayir" onclick="setGozlem('cukur','hayir')">Hayır</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="section" id="notes-section">
       <div class="sec-lbl">Notlar</div>
       <textarea id="f-notes" placeholder="Özel gözlemler, çevre koşulları, dikkat çeken durumlar..."></textarea>
     </div>
+
+    <button type="button" id="acilis-toggle-btn" onclick="openSection('acilis')" style="display:none;background:none;border:1.5px dashed var(--border);border-radius:var(--radius-sm);width:100%;padding:13px;font-size:14px;font-weight:600;color:var(--text2);cursor:pointer;font-family:var(--font);margin-bottom:14px">
+      ＋ Kontrol açılışı bilgisi ekle
+    </button>
+
+    <div class="section" id="acilis-section" style="display:none">
+      <div class="sec-lbl">Kontrol Açılışı Bilgileri</div>
+      <div class="row2" style="margin-bottom:10px">
+        <div class="fg">
+          <label>Tarih (Control Date)</label>
+          <div class="date-pick" id="f-a-control-date-pick"></div>
+        </div>
+        <div class="fg">
+          <label>Kuru Kum Yüksekliği (Dry Sand)</label>
+          <div class="uw"><input type="number" id="f-a-dry-height" placeholder="0" min="0" step="0.1" inputmode="decimal"><span class="uunit">cm</span></div>
+        </div>
+      </div>
+      <div class="row2" style="margin-bottom:10px">
+        <div class="fg">
+          <label>Islak Kum Yüksekliği (Wet Sand)</label>
+          <div class="uw"><input type="number" id="f-a-wet-height" placeholder="0" min="0" step="0.1" inputmode="decimal"><span class="uunit">cm</span></div>
+        </div>
+        <div class="fg">
+          <label>Çap (Diameter of Egg Chamber)</label>
+          <div class="uw"><input type="number" id="f-a-diameter" placeholder="0" min="0" step="0.1" inputmode="decimal"><span class="uunit">cm</span></div>
+        </div>
+      </div>
+      <div class="row2" style="margin-bottom:10px">
+        <div class="fg">
+          <label>Parazitli (Infested Eggs)</label>
+          <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-a-infested',-1)">−</button><input type="number" id="f-a-infested" value="0" min="0" step="1" inputmode="numeric" oninput="calcTotal('f-a')"><button class="cnt-btn" onclick="cnt('f-a-infested',1)">+</button></div>
+        </div>
+        <div class="fg">
+          <label>Canlı Yavru (Alive Hatchlings)</label>
+          <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-a-alive',-1)">−</button><input type="number" id="f-a-alive" value="0" min="0" step="1" inputmode="numeric"><button class="cnt-btn" onclick="cnt('f-a-alive',1)">+</button></div>
+        </div>
+      </div>
+      <div class="row2" style="margin-bottom:10px">
+        <div class="fg">
+          <label>Ölü Yavru (Dead Hatchlings)</label>
+          <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-a-dead-hatch',-1)">−</button><input type="number" id="f-a-dead-hatch" value="0" min="0" step="1" inputmode="numeric"><button class="cnt-btn" onclick="cnt('f-a-dead-hatch',1)">+</button></div>
+        </div>
+        <div class="fg">
+          <label>Boş Kabuk (Empty Egg Shells)</label>
+          <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-a-empty-shells',-1)">−</button><input type="number" id="f-a-empty-shells" value="0" min="0" step="1" inputmode="numeric" oninput="calcTotal('f-a')"><button class="cnt-btn" onclick="cnt('f-a-empty-shells',1)">+</button></div>
+        </div>
+      </div>
+      <div class="row2" style="margin-bottom:10px">
+        <div class="fg">
+          <label>Erken Embriyo (Early Embryos)</label>
+          <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-a-early',-1)">−</button><input type="number" id="f-a-early" value="0" min="0" step="1" inputmode="numeric" oninput="calcTotal('f-a')"><button class="cnt-btn" onclick="cnt('f-a-early',1)">+</button></div>
+        </div>
+        <div class="fg">
+          <label>Orta Embriyo (Middle Embryos)</label>
+          <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-a-middle',-1)">−</button><input type="number" id="f-a-middle" value="0" min="0" step="1" inputmode="numeric" oninput="calcTotal('f-a')"><button class="cnt-btn" onclick="cnt('f-a-middle',1)">+</button></div>
+        </div>
+      </div>
+      <div class="row2" style="margin-bottom:10px">
+        <div class="fg">
+          <label>Geç Embriyo (Late Embryos)</label>
+          <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-a-late',-1)">−</button><input type="number" id="f-a-late" value="0" min="0" step="1" inputmode="numeric" oninput="calcTotal('f-a')"><button class="cnt-btn" onclick="cnt('f-a-late',1)">+</button></div>
+        </div>
+        <div class="fg">
+          <label>Döllenmemiş (Unfertilized Eggs)</label>
+          <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-a-unfertilized',-1)">−</button><input type="number" id="f-a-unfertilized" value="0" min="0" step="1" inputmode="numeric" oninput="calcTotal('f-a')"><button class="cnt-btn" onclick="cnt('f-a-unfertilized',1)">+</button></div>
+        </div>
+      </div>
+      <div class="row2" style="margin-bottom:10px">
+        <div class="fg">
+          <label>Ölü Embriyo (Total Dead Embryos)</label>
+          <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-a-dead-embryo',-1)">−</button><input type="number" id="f-a-dead-embryo" value="0" min="0" step="1" inputmode="numeric"><button class="cnt-btn" onclick="cnt('f-a-dead-embryo',1)">+</button></div>
+        </div>
+        <div class="fg">
+          <label>Toplam Yumurta <span style="font-weight:400;font-size:11px;color:var(--text3)">(otomatik)</span></label>
+          <div class="uw"><input type="number" id="f-a-total-eggs" value="0" readonly style="background:var(--bg3);color:var(--text2);cursor:default"><span class="uunit">#</span></div>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" id="pred-toggle-btn" onclick="openSection('pred')" style="display:none;background:none;border:1.5px dashed var(--border);border-radius:var(--radius-sm);width:100%;padding:13px;font-size:14px;font-weight:600;color:var(--text2);cursor:pointer;font-family:var(--font);margin-bottom:14px">
+      ＋ Predasyon bilgisi ekle
+    </button>
 
     <div class="section pred-section" id="pred-section" style="display:none">
       <div class="sec-lbl">Predasyon Bilgileri</div>
@@ -598,10 +648,7 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
         </div>
         <div class="fg">
           <label>Predasyon Tarihi</label>
-          <div class="date-y-wrap">
-            <div class="date-pick" id="f-pred-date-pick"></div>
-            <button type="button" class="btn-yesterday" onclick="setYesterday('f-pred-date-pick')" title="Dün">Y</button>
-          </div>
+          <div class="date-pick" id="f-pred-date-pick"></div>
         </div>
       </div>
       <div class="row2" style="margin-bottom:10px">
@@ -632,7 +679,7 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
           </div>
           <div class="fg">
             <label for="f-pred2-date">Predasyon Tarihi</label>
-            <div class="date-y-wrap"><div class="date-pick" id="f-pred2-date-pick"></div><button type="button" class="btn-yesterday" onclick="setYesterday('f-pred2-date-pick')" title="Dün">Y</button></div>
+            <div class="date-pick" id="f-pred2-date-pick"></div>
           </div>
         </div>
         <div class="row2" style="margin-bottom:10px">
@@ -652,39 +699,16 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
       </div>
     </div>
 
+    <button type="button" id="cikis-toggle-btn" onclick="openSection('cikis')" style="display:none;background:none;border:1.5px dashed var(--border);border-radius:var(--radius-sm);width:100%;padding:13px;font-size:14px;font-weight:600;color:var(--text2);cursor:pointer;font-family:var(--font);margin-bottom:14px">
+      ＋ Yavru çıkışı bilgisi ekle
+    </button>
+
     <div class="section" id="cikis-section" style="display:none">
       <div class="sec-lbl">Yavru Çıkışı Bilgileri</div>
-      <div class="row2" style="margin-bottom:10px">
-        <div class="fg">
-          <label>Çıkış Tarihi</label>
-          <div class="date-y-wrap">
-            <div class="date-pick" id="f-cikis-date-pick"></div>
-            <button type="button" class="btn-yesterday" onclick="setYesterday('f-cikis-date-pick')" title="Dün">Y</button>
-          </div>
-        </div>
-        <div class="fg">
-          <label>Yavru Sayısı</label>
-          <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-cikis-yavru',-1)">−</button><input type="number" id="f-cikis-yavru" value="0" min="0" step="1" inputmode="numeric"><button class="cnt-btn" onclick="cnt('f-cikis-yavru',1)">+</button></div>
-        </div>
-      </div>
-      <div class="fg" style="margin-bottom:10px">
-        <label>Denize Ulaşan</label>
-        <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('f-cikis-denize',-1)">−</button><input type="number" id="f-cikis-denize" value="0" min="0" step="1" inputmode="numeric"><button class="cnt-btn" onclick="cnt('f-cikis-denize',1)">+</button></div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="sec-lbl">Fotoğraf <span style="font-weight:400;text-transform:none;letter-spacing:0">(opsiyonel)</span></div>
-      <div class="photo-area" id="photo-area">
-        <input type="file" accept="image/*" id="f-photo" onchange="onPhotoChange(event)">
-        <span class="pa-icon">📷</span>
-        <div class="pa-lbl">Fotoğraf Ekle</div>
-        <div class="pa-sub">Kameradan çek veya galeriden seç</div>
-      </div>
-      <div class="photo-preview-wrap" id="photo-preview-wrap">
-        <img id="photo-preview" src="" alt="Yuva fotoğrafı önizlemesi">
-        <button class="photo-remove" onclick="removePhoto()">✕ Fotoğrafı kaldır</button>
-      </div>
+      <div id="cikis-list"></div>
+      <button type="button" id="cikis-add-btn" onclick="addCikisBlock()" style="background:none;border:1.5px dashed var(--border);border-radius:var(--radius-sm);width:100%;padding:11px;font-size:14px;font-weight:600;color:var(--blue);cursor:pointer;font-family:var(--font);margin-top:4px">
+        ＋ Yavru çıkışı ekle
+      </button>
     </div>
 
     <div class="section" id="alteration-section" style="display:none">
@@ -699,10 +723,7 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
       <div id="alt-fields" style="display:none;margin-top:12px">
         <div class="fg" style="margin-bottom:10px">
           <label>Taşıma Tarihi</label>
-          <div class="date-y-wrap">
-            <div class="date-pick" id="alt-date-pick"></div>
-            <button type="button" class="btn-yesterday" onclick="setDatePicker('alt-date-pick', todayStr())" title="Bugün">T</button>
-          </div>
+          <div class="date-pick" id="alt-date-pick"></div>
         </div>
         <div class="gps-wrap" style="margin-bottom:6px">
           <div class="fg">
@@ -713,9 +734,7 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
             <label>Boylam (Yeni)</label>
             <input type="number" id="alt-lng" placeholder="33.000000" step="0.000001" inputmode="decimal">
           </div>
-          <button class="gps-btn" id="alt-gps-btn" onclick="getGPSAlt()">📍 GPS Al</button>
         </div>
-        <div class="gps-note" id="alt-gps-note" style="margin-bottom:10px"></div>
         <div class="row3">
           <div class="fg">
             <label>Kuru kum (Yeni)</label>
@@ -742,7 +761,8 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
     <div class="s-id" id="success-id">MY-001</div>
     <p class="s-sub" id="success-detail">Kaydedildi.</p>
     <p id="success-motivasyon" style="font-size:15px;color:var(--text2);font-style:italic;margin-bottom:1.5rem;line-height:1.6;padding:0 1rem"></p>
-    <button class="btn-secondary" onclick="resetForm()">＋ Yeni Kayıt Ekle</button>
+    <button class="btn-primary" onclick="resetForm(true)" style="margin-bottom:10px">⚡ Aynı bölgeye yeni kayıt</button>
+    <button class="btn-secondary" onclick="resetForm(false)">＋ Baştan (bölge değiştir)</button>
   </div>
 </div>
 <script>
@@ -839,7 +859,6 @@ const REGIONS = {
 
 // ─── STATE ────────────────────────────────────────────────
 let mainType = null, regionCode = null, subCode = null;
-let photoDataUrl = null, editPhotoDataUrl = null;
 let selectedNestId = null, selectedKontrolType = null;
 let selectedIhtimal = null, selectedTur = 'CC';
 let gozlem = { ses: null, gurultu: null, cukur: null };
@@ -856,44 +875,13 @@ let currentNest = null;
 let cachedNum = null;        // sıradaki numara (int)
 let cachedNumKey = null;     // hangi bölge/iz kodu için (yuva: regionCode, iz: subCode)
 
-// Fotoğrafı Drive'a yükle, link döndür
-async function uploadPhoto(id, base64) {
-  try {
-    const res = await fetch(GS_URL, {
-      method: 'POST',
-      body: new URLSearchParams({ action: 'photo', id: id, photo: base64 })
-    });
-    const json = await res.json();
-    return (json.ok && json.url) ? json.url : null;
-  } catch(e) {
-    return null;
-  }
-}
-
 // Kaydı Sheets'e gönder. Başarılıysa true, ulaşılamazsa false döner.
 async function syncToSheets(record) {
-  // 1. ÖNCE metin verisini gönder (fotoğraf base64 ise çıkar — URL'ye sığmaz)
-  const recNoPhoto = { ...record };
-  if (recNoPhoto.photo && recNoPhoto.photo.startsWith('data:')) recNoPhoto.photo = null;
-  let ok = false;
   try {
-    const res = await fetch(GS_URL + '?data=' + encodeURIComponent(JSON.stringify(recNoPhoto)) + '&t=' + Date.now(), { cache: 'no-store' });
+    const res = await fetch(GS_URL + '?data=' + encodeURIComponent(JSON.stringify(record)) + '&t=' + Date.now(), { cache: 'no-store' });
     const json = await res.json();
-    ok = !!json.ok;
-  } catch(e) { ok = false; }
-
-  // 2. Fotoğraf varsa Drive'a yükle, linkle birlikte tekrar gönder
-  if (ok && record.photo && record.photo.startsWith('data:')) {
-    const url = await uploadPhoto(record.id, record.photo);
-    if (url) {
-      record.photo = url; // currentNest'teki referans da güncellensin
-      const recWithUrl = { ...record, photo: url };
-      try {
-        await fetch(GS_URL + '?data=' + encodeURIComponent(JSON.stringify(recWithUrl)) + '&t=' + Date.now(), { cache: 'no-store' });
-      } catch(e) { /* foto Drive'da var, link sonra eşlenir */ }
-    }
-  }
-  return ok;
+    return !!json.ok;
+  } catch(e) { return false; }
 }
 
 // ─── NAVIGATION ──────────────────────────────────────────
@@ -994,7 +982,7 @@ function selectNestLocal(r) {
   $('kontrol-search-input').value = r.id;
   hide('kontrol-results');
   $('kc-id').textContent  = r.id + ' — ' + (r.bolge || '');
-  const meta = (r.date ? fmtDate(r.date) : '') + (r.observer ? ' · ' + r.observer : '');
+  const meta = (r.date ? fmtDate(r.date) : '');
   const photoLink = (r.photo && r.photo.startsWith('http'))
     ? `<br><a href="${r.photo}" target="_blank" style="color:var(--blue);font-weight:600">📷 Fotoğrafı Gör</a>`
     : '';
@@ -1026,12 +1014,6 @@ function selectKontrolType(t) {
   setVal('f-k-not', currentNest && currentNest.notes ? currentNest.notes : '');
 }
 
-function setYesterday(pickerId) {
-  const d = new Date();
-  d.setDate(d.getDate() - 1);
-  setDatePicker(pickerId, d.toISOString().split('T')[0]);
-}
-
 // ─── FORM ─────────────────────────────────────────────────
 function selectMain(t) {
   mainType = t; regionCode = null; subCode = null;
@@ -1043,14 +1025,18 @@ function selectMain(t) {
   hide('kontrol-section');
   hide('region-section');
   hide('pred-section');
+  hide('cikis-section');
+  hide('acilis-section');
+  if ($('pred-toggle-btn'))   $('pred-toggle-btn').style.display = 'none';
+  if ($('cikis-toggle-btn'))  $('cikis-toggle-btn').style.display = 'none';
+  if ($('acilis-toggle-btn')) $('acilis-toggle-btn').style.display = 'none';
   hide('iz-ihtimal-section');
   hide('tur-section');
   hide('iz-gozlem-section');
   hide('alteration-section');
 
-  // Kontrol'de observer, GPS ve kum alanları gizle
+  // Kontrol'de tarih, koordinat ve kum alanları gizle
   const isKontrol = t === 'kontrol';
-  $('observer-wrap').style.display = isKontrol ? 'none' : 'block';
   $('tarih-block').style.display   = isKontrol ? 'none' : 'block';
   $('gps-section').style.display   = isKontrol ? 'none' : 'block';
   $('kum-section').style.display   = isKontrol ? 'none' : 'block';
@@ -1117,12 +1103,7 @@ function setAlteration(v) {
   $('alt-fields').style.display = nestAltered ? 'block' : 'none';
   if (nestAltered && !$('alt-date-pick-dd')) {
     buildDatePicker('alt-date-pick');
-    setDatePicker('alt-date-pick', todayStr());
   }
-}
-
-function getGPSAlt() {
-  startGPS('alt-lat', 'alt-lng', 'alt-gps-btn', 'alt-gps-note');
 }
 
 function resetAlteration() {
@@ -1282,29 +1263,50 @@ function selectSubtype(code) {
   show('tur-section');
   resetTur();
 
-  // Taşıma sadece MY (yuva) kaydında — çıkış/predasyonda yuva zaten yerinde
+  // Taşıma sadece MY (yuva) kaydında
   const isYuva = code.endsWith('Y');
   $('alteration-section').style.display = isYuva ? 'block' : 'none';
   resetAlteration();
 
-  // Predasyon alanlarını sadece MP seçilince göster
-  const isPred = code.endsWith('P');
-  $('pred-section').style.display = isPred ? 'block' : 'none';
-  if (!isPred) clearPredFields();
-
-  // Yavru çıkışı alanlarını sadece MC seçilince göster
+  const isPred  = code.endsWith('P');
   const isCikis = code.endsWith('C');
-  $('cikis-section').style.display = isCikis ? 'block' : 'none';
-  if (isCikis) {
-    if (!$('f-cikis-date-pick-dd')) { buildDatePicker('f-cikis-date-pick'); }
-    setYesterday('f-cikis-date-pick');
-  } else {
-    ['f-cikis-yavru','f-cikis-denize'].forEach(id => setVal(id, ''));
-  }
 
-  // Çıkış (C) ve predasyon (P) ile bulunan yuvada yuvalama tarihi bilinmez —
-  // ana tarihi dondur ve Sheets'e gönderme. Sadece Y'de yuvalama tarihi girilir.
-  freezeMainDate(isCikis || isPred);
+  // Kodun kendi bölümü otomatik AÇIK; diğerleri toggle ile eklenebilir (kapalı başlar).
+  // Predasyon: CP'de açık, diğerlerinde toggle
+  setSectionOpen('pred', isPred);
+  // Çıkış: CC'de açık, diğerlerinde toggle
+  setSectionOpen('cikis', isCikis);
+  // Kontrol açılışı: her zaman toggle (hiçbir kodda otomatik açık değil)
+  setSectionOpen('acilis', false);
+
+  // Masa başı giriş: yuva tarihi her kodda elle girilebilir
+  freezeMainDate(false);
+}
+
+// Bir ek bölümü aç/kapat ve toggle butonunu güncelle. which: 'pred' | 'cikis' | 'acilis'
+function setSectionOpen(which, open) {
+  const secId = which === 'pred' ? 'pred-section' : which === 'cikis' ? 'cikis-section' : 'acilis-section';
+  const section = $(secId);
+  const toggle  = $(which + '-toggle-btn');
+  if (!section) return;
+  section.style.display = open ? 'block' : 'none';
+  if (toggle) toggle.style.display = open ? 'none' : 'block';
+
+  if (which === 'pred') {
+    if (open) { if (!$('f-pred-date-pick-dd')) buildDatePicker('f-pred-date-pick'); }
+    else { clearPredFields(); }
+  } else if (which === 'cikis') {
+    if (open) { resetCikisList(); }
+    else { const el = $('cikis-list'); if (el) el.innerHTML = ''; cikisCount = 0; }
+  } else if (which === 'acilis') {
+    if (open) { if (!$('f-a-control-date-pick-dd')) buildDatePicker('f-a-control-date-pick'); }
+    else { clearAcilisFields(); }
+  }
+}
+
+// Toggle butonundan çağrılır — bölümü açar
+function openSection(which) {
+  setSectionOpen(which, true);
 }
 
 // Ana tarih alanını dondur/aç (C ve P kayıtlarında yuvalama tarihi bilinmez)
@@ -1320,150 +1322,6 @@ function freezeMainDate(frozen) {
   });
   const note = $('main-date-note');
   if (note) note.style.display = frozen ? 'block' : 'none';
-}
-
-// ─── GPS (yüksek doğruluk: ortalama + sabırlı ölçüm + onay) ─
-const GPS_TARGET_ACC = 4;     // ±4 m hedef
-const GPS_MIN_MS     = 30000; // en az 30 sn ölçüm (erken durmaz)
-const GPS_MAX_MS     = 60000; // en fazla 60 sn (sonra eldeki en iyiyle biter)
-const GPS_GOOD_ACC   = 10;    // ortalamaya sadece ±10 m'den iyi okumalar katılır
-let _gpsWatchId = null;
-let _gpsState   = null;       // aktif ölçüm durumu
-
-function startGPS(latId, lngId, btnId, noteId, onDone) {
-  const btn  = btnId ? $(btnId) : null;
-  const note = $(noteId);
-
-  if (!navigator.geolocation) { note.textContent = '⚠️ Bu tarayıcı GPS desteklemiyor.'; return; }
-  if (location.protocol !== 'https:' && location.protocol !== 'file:') {
-    note.textContent = '⚠️ GPS yalnızca https:// üzerinde çalışır (yayınlanmış sitede).'; return;
-  }
-
-  // Önceki ölçümü temizle
-  if (_gpsWatchId !== null) { navigator.geolocation.clearWatch(_gpsWatchId); _gpsWatchId = null; }
-
-  // Aynı alan için daha önce okuma toplandıysa, üstüne ekle (iyileştir).
-  // Farklı alan veya ilk ölçümse sıfırdan başla.
-  const continuing = _gpsState && _gpsState.latId === latId && _gpsState.samples && _gpsState.samples.length > 0;
-  const prevSamples = continuing ? _gpsState.samples : [];
-  const prevBest    = continuing ? _gpsState.bestSingle : Infinity;
-
-  // Ölçüm durumu
-  _gpsState = {
-    latId, lngId, note, btn, onDone,
-    samples: prevSamples,          // önceki okumalar korunur (iyileştirme)
-    bestSingle: prevBest,
-    startTime: Date.now(),
-    locked: false
-  };
-
-  if (btn) { btn.textContent = continuing ? '📡 İyileştiriliyor...' : '📡 Ölçülüyor...'; btn.disabled = true; }
-  note.innerHTML = continuing
-    ? `📡 İyileştiriliyor... (${prevSamples.length} okuma üzerine ekleniyor)`
-    : '📡 GPS sinyali aranıyor...';
-
-  _gpsWatchId = navigator.geolocation.watchPosition(onGpsReading, onGpsError, {
-    enableHighAccuracy: true, maximumAge: 0, timeout: GPS_MAX_MS
-  });
-
-  // En fazla süre dolunca eldeki en iyiyle bitir
-  _gpsState.maxTimer = setTimeout(() => finishGPS(true), GPS_MAX_MS);
-}
-
-function onGpsReading(pos) {
-  const s = _gpsState;
-  if (!s || s.locked) return;
-  const acc = pos.coords.accuracy;
-  const elapsed = Date.now() - s.startTime;
-  const secLeft = Math.max(0, Math.ceil((GPS_MIN_MS - elapsed) / 1000));
-
-  if (acc < s.bestSingle) s.bestSingle = acc;
-
-  // Sadece yeterince iyi okumaları ortalamaya kat
-  if (acc <= GPS_GOOD_ACC) {
-    s.samples.push({ lat: pos.coords.latitude, lng: pos.coords.longitude, acc });
-    updateAveraged(s);
-  }
-
-  const avgAcc = currentAvgAcc(s);
-  const shownAcc = avgAcc != null ? avgAcc : s.bestSingle;
-  const qual = shownAcc <= GPS_TARGET_ACC ? '🟢' : shownAcc <= GPS_GOOD_ACC ? '🟡' : '🔴';
-  const n = s.samples.length;
-
-  if (elapsed < GPS_MIN_MS) {
-    // Henüz minimum süre dolmadı — ölçmeye devam, durdurma seçeneği sun
-    s.note.innerHTML = `${qual} Ölçülüyor... ±${shownAcc.toFixed(1)} m · ${n} okuma · ${secLeft} sn `
-      + `<button onclick="finishGPS(false)" style="font-size:12px;padding:3px 10px;border:1px solid var(--text3);background:var(--bg2);color:var(--text);border-radius:6px;cursor:pointer;margin-left:6px">■ Durdur</button>`;
-  } else {
-    // Minimum süre doldu — eldeki en iyi ortalamayla otomatik bitir
-    finishGPS(false);
-  }
-}
-
-// Ortalamayı hesapla — doğruluğa göre ağırlıklı (daha iyi okuma daha çok sayar)
-function updateAveraged(s) {
-  const best = s.samples.slice().sort((a,b) => a.acc - b.acc).slice(0, 10); // en iyi 10 okuma
-  let wsum = 0, latSum = 0, lngSum = 0;
-  best.forEach(r => {
-    const w = 1 / (r.acc * r.acc);  // doğruluk iyiyse ağırlık yüksek
-    wsum += w; latSum += r.lat * w; lngSum += r.lng * w;
-  });
-  if (wsum > 0) {
-    $(s.latId).value = (latSum / wsum).toFixed(6);
-    $(s.lngId).value = (lngSum / wsum).toFixed(6);
-  }
-}
-
-// Ortalamanın tahmini doğruluğu (en iyi okumalar bazında)
-function currentAvgAcc(s) {
-  if (!s.samples.length) return null;
-  const best = s.samples.slice().sort((a,b) => a.acc - b.acc).slice(0, 10);
-  // Birden çok okuma ortalandıkça güven artar — en iyi okumayı okuma sayısıyla hafifçe iyileştir
-  const bestAcc = best[0].acc;
-  const factor = Math.max(0.5, 1 - (best.length - 1) * 0.05); // her ek okuma biraz iyileştirir (en fazla %50)
-  return bestAcc * factor;
-}
-
-function finishGPS(timedOut) {
-  const s = _gpsState;
-  if (!s || s.locked) return;
-  s.locked = true;
-  if (s.maxTimer) clearTimeout(s.maxTimer);
-  if (_gpsWatchId !== null) { navigator.geolocation.clearWatch(_gpsWatchId); _gpsWatchId = null; }
-
-  const avgAcc = currentAvgAcc(s);
-  const shownAcc = avgAcc != null ? avgAcc : s.bestSingle;
-  const hasCoord = !!$(s.latId).value;
-
-  if (s.btn) { s.btn.textContent = '🎯 İyileştir'; s.btn.disabled = false; }
-
-  if (!hasCoord) {
-    s.note.innerHTML = '⚠️ Konum alınamadı. Açık alanda tekrar deneyin.';
-  } else {
-    const qual = shownAcc <= GPS_TARGET_ACC ? '🟢' : shownAcc <= GPS_GOOD_ACC ? '🟡' : '🔴';
-    const label = shownAcc <= GPS_TARGET_ACC ? 'Sağlam' : shownAcc <= GPS_GOOD_ACC ? 'Kabul edilebilir' : 'Zayıf — tekrar önerilir';
-    s.note.innerHTML = `${qual} ${label} · ±${shownAcc.toFixed(1)} m · ${s.samples.length} okuma ortalaması`;
-  }
-  if (s.onDone) s.onDone();
-}
-
-function onGpsError(err) {
-  const s = _gpsState;
-  if (s && s.maxTimer) clearTimeout(s.maxTimer);
-  if (_gpsWatchId !== null) { navigator.geolocation.clearWatch(_gpsWatchId); _gpsWatchId = null; }
-  const msgs = {
-    1: 'Konum izni verilmedi. Ayarlar → Konum\'u kontrol edin.',
-    2: 'GPS sinyali alınamadı. Açık alanda tekrar deneyin.',
-    3: 'Zaman aşımı. Tekrar deneyin.'
-  };
-  if (s) {
-    s.note.textContent = '⚠️ ' + (msgs[err.code] || err.message);
-    if (s.btn) { s.btn.textContent = '📍 GPS Al'; s.btn.disabled = false; }
-  }
-}
-
-function getGPS() {
-  startGPS('f-lat', 'f-lng', 'gps-btn', 'gps-note');
 }
 
 // ─── ACILIS FIELD HELPERS ────────────────────────────────
@@ -1502,7 +1360,7 @@ async function submitKontrol() {
       alert('Bu yuva için en fazla 4 çıkış kaydı girilebilir.');
       return;
     }
-    rec.cikis_list.push(buildCikisEntry('f-k', 'Kontrol'));
+    rec.cikis_list.push(buildCikisEntry('f-k'));
 
   } else if (selectedKontrolType === 'pred') {
     const p = {
@@ -1556,10 +1414,7 @@ async function submitNew() {
     if (mainType === 'yuva') show('err-subtype');
     ok = false;
   }
-  if (mainType === 'iz' && selectedIhtimal == null) { show('err-ihtimal'); ok = false; }
-  else if ($('err-ihtimal')) hide('err-ihtimal');
-  const obs = val('f-observer').trim();
-  if (!obs) { show('err-obs'); ok = false; } else { hide('err-obs'); }
+  if ($('err-ihtimal')) hide('err-ihtimal');  // İz ihtimali opsiyonel
   if (!ok) return;
 
   const btn = $('submit-btn');
@@ -1597,15 +1452,16 @@ async function submitNew() {
     if (iz) fullName = iz.full;
   }
 
-  // C ve P ile bulunan yuvada yuvalama tarihi bilinmez → boş gönder
-  const noNestDate = subCode && (subCode.endsWith('C') || subCode.endsWith('P'));
   const pred2On = $('pred2-block').style.display !== 'none';
+  // Bölümler açık mı? (toggle ile açılmış olabilir — her kodda birlikte girilebilir)
+  const predOpen   = $('pred-section').style.display !== 'none';
+  const cikisOpen  = $('cikis-section').style.display !== 'none';
+  const acilisOpen = $('acilis-section').style.display !== 'none';
 
   const record = {
     id, mainType, regionCode, subCode,
     bolge:    fullName,
-    date:     noNestDate ? '' : getDatePicker('f-date-pick'),
-    observer: obs,
+    date:     getDatePicker('f-date-pick'),
     lat:  pn(val('f-lat')),
     lng:  pn(val('f-lng')),
     dry:  pn(val('f-dry')),
@@ -1625,21 +1481,23 @@ async function submitNew() {
     alt_wet:   nestAltered ? pn(val('alt-wet'))  : null,
     alt_total: nestAltered ? sumDist('alt-dry', 'alt-semi', 'alt-wet') : null,
     gozlem:    mainType === 'iz' ? { ses: gozlem.ses, gurultu: gozlem.gurultu, cukur: gozlem.cukur } : null,
-    photo:     photoDataUrl || null,
-    // Predasyon — sadece MP kayıtlarında dolu olur
-    pred_extent: val('f-pred-extent') || null,
-    pred_date:   getDatePicker('f-pred-date-pick') || null,
-    predator:    val('f-predator').trim() || null,
-    pred_side:   val('f-pred-side') || null,
-    pred_eggs:   pn(val('f-pred-eggs')),
+    photo:     null,
+    // Predasyon — bölüm açıksa (CP veya toggle ile eklendiyse)
+    pred_extent: predOpen ? (val('f-pred-extent') || null) : null,
+    pred_date:   predOpen ? (getDatePicker('f-pred-date-pick') || null) : null,
+    predator:    predOpen ? (val('f-predator').trim() || null) : null,
+    pred_side:   predOpen ? (val('f-pred-side') || null) : null,
+    pred_eggs:   predOpen ? pn(val('f-pred-eggs')) : null,
     // 2. predasyon — sadece açıldıysa
-    pred2_extent: pred2On ? (val('f-pred2-extent') || null) : null,
-    pred2_date:   pred2On ? (getDatePicker('f-pred2-date-pick') || null) : null,
-    predator2:    pred2On ? (val('f-predator2').trim() || null) : null,
-    pred2_side:   pred2On ? (val('f-pred2-side') || null) : null,
-    pred2_eggs:   pred2On ? pn(val('f-pred2-eggs')) : null,
-    // Yavru çıkışı — sadece MC kayıtlarında dolu olur (1. çıkış)
-    cikis_list: (subCode && subCode.endsWith('C')) ? [buildCikisEntry('f-cikis', obs)] : null,
+    pred2_extent: (predOpen && pred2On) ? (val('f-pred2-extent') || null) : null,
+    pred2_date:   (predOpen && pred2On) ? (getDatePicker('f-pred2-date-pick') || null) : null,
+    predator2:    (predOpen && pred2On) ? (val('f-predator2').trim() || null) : null,
+    pred2_side:   (predOpen && pred2On) ? (val('f-pred2-side') || null) : null,
+    pred2_eggs:   (predOpen && pred2On) ? pn(val('f-pred2-eggs')) : null,
+    // Yavru çıkışı — bölüm açıksa (CC veya toggle ile eklendiyse)
+    cikis_list: cikisOpen ? collectCikisList() : null,
+    // Kontrol açılışı — bölüm açıksa (toggle ile eklendiyse)
+    acilis: acilisOpen ? getAcilisData('f-a-control', 'f-a') : null,
     created_at: new Date().toISOString()
   };
 
@@ -1651,7 +1509,10 @@ async function submitNew() {
     alert('⚠️ Kayıt Sheets\'e gönderilemedi.\nNumara (' + id + ') alındı ama veri yazılamadı. Bağlantıyı kontrol edip tekrar deneyin.');
     return;
   }
-  cachedNum = null; cachedNumKey = null;  // bu numara kullanıldı, önbelleği temizle
+  // Seri giriş: numarayı Sheets'e tekrar sormamak için yerel sayacı +1 artır.
+  // Sonraki kayıt bu bölge için cachedNum+1 kullanır (bekleme yok).
+  cachedNum = sheetsNext + 1;
+  cachedNumKey = numKey;
   showSuccess(id, fullName + ' kaydedildi.');
 }
 
@@ -1666,18 +1527,93 @@ function sumDist(dryId, semiId, wetId) {
 }
 
 // Bir çıkış (yavru çıkışı) nesnesi oluştur. prefix: 'f-cikis' (ana form) veya 'f-k' (Yuva Bul)
-function buildCikisEntry(prefix, observer) {
+function buildCikisEntry(prefix) {
   const dateId = prefix === 'f-k' ? 'f-k-cikis-date-pick' : prefix + '-date-pick';
   const yavruId = prefix === 'f-k' ? 'f-k-cikis-yavru' : prefix + '-yavru';
   const denizeId = prefix === 'f-k' ? 'f-k-denize' : prefix + '-denize';
   return {
     date:       getDatePicker('f-date-pick'),
-    observer:   observer,
     cikis_date: getDatePicker(dateId) || null,
     yavru:      pn(val(yavruId)),
     denize:     pn(val(denizeId))
   };
 }
+
+// ─── DİNAMİK ÇOKLU ÇIKIŞ (ana form, en fazla 4) ────────────
+const MAX_CIKIS = 4;
+let cikisCount = 0;
+
+function cikisBlockHTML(idx) {
+  return `<div class="cikis-block" id="cikis-block-${idx}" style="padding:12px;border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:10px;position:relative">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <span style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text2)">${idx}. Yavru Çıkışı</span>
+      ${idx > 1 ? `<button type="button" onclick="removeCikisBlock(${idx})" style="background:none;border:none;color:var(--red);font-size:18px;cursor:pointer;padding:0;line-height:1">×</button>` : ''}
+    </div>
+    <div class="row2" style="margin-bottom:10px">
+      <div class="fg">
+        <label>Çıkış Tarihi</label>
+        <div class="date-pick" id="fc-date-${idx}"></div>
+      </div>
+      <div class="fg">
+        <label>Yavru Sayısı</label>
+        <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('fc-yavru-${idx}',-1)">−</button><input type="number" id="fc-yavru-${idx}" value="0" min="0" step="1" inputmode="numeric"><button class="cnt-btn" onclick="cnt('fc-yavru-${idx}',1)">+</button></div>
+      </div>
+    </div>
+    <div class="fg">
+      <label>Denize Ulaşan</label>
+      <div class="counter-wrap"><button class="cnt-btn" onclick="cnt('fc-denize-${idx}',-1)">−</button><input type="number" id="fc-denize-${idx}" value="0" min="0" step="1" inputmode="numeric"><button class="cnt-btn" onclick="cnt('fc-denize-${idx}',1)">+</button></div>
+    </div>
+  </div>`;
+}
+
+function addCikisBlock() {
+  if (cikisCount >= MAX_CIKIS) return;
+  cikisCount++;
+  $('cikis-list').insertAdjacentHTML('beforeend', cikisBlockHTML(cikisCount));
+  buildDatePicker('fc-date-' + cikisCount);
+  updateCikisAddBtn();
+}
+
+function removeCikisBlock(idx) {
+  const el = $('cikis-block-' + idx);
+  if (el) el.remove();
+  // Blokları yeniden numaralandırmak yerine, kalanları say
+  cikisCount = $('cikis-list').querySelectorAll('.cikis-block').length;
+  updateCikisAddBtn();
+}
+
+function updateCikisAddBtn() {
+  const btn = $('cikis-add-btn');
+  if (!btn) return;
+  const cur = $('cikis-list').querySelectorAll('.cikis-block').length;
+  btn.style.display = cur >= MAX_CIKIS ? 'none' : 'block';
+}
+
+// Ana formdaki tüm çıkış bloklarını topla
+function collectCikisList() {
+  const blocks = $('cikis-list').querySelectorAll('.cikis-block');
+  const list = [];
+  blocks.forEach(b => {
+    const idx = b.id.replace('cikis-block-', '');
+    const entry = {
+      date:       getDatePicker('f-date-pick'),
+      cikis_date: getDatePicker('fc-date-' + idx) || null,
+      yavru:      pn(val('fc-yavru-' + idx)),
+      denize:     pn(val('fc-denize-' + idx))
+    };
+    list.push(entry);
+  });
+  return list;
+}
+
+// Çıkış listesini sıfırla (1 boş blok ile başlat)
+function resetCikisList() {
+  cikisCount = 0;
+  const el = $('cikis-list');
+  if (el) el.innerHTML = '';
+  addCikisBlock();  // ilk blok
+}
+
 
 // Başarı ekranını göster
 function showSuccess(id, detail) {
@@ -1713,13 +1649,17 @@ function cnt(id, delta) {
   const el = $(id);
   const cur = parseInt(el.value) || 0;
   el.value = Math.max(0, cur + delta);
-  calcTotal();
+  // Doğru toplamı güncelle (f-a = yeni kayıt açılışı, f-k = Yuva Bul)
+  if (id.startsWith('f-a-')) calcTotal('f-a');
+  else calcTotal('f-k');
 }
 
-function calcTotal() {
-  const ids = ['f-k-empty-shells','f-k-unfertilized','f-k-infested','f-k-early','f-k-middle','f-k-late'];
+function calcTotal(prefix) {
+  // prefix verilmezse f-k (Yuva Bul) varsay; f-a ise yeni kayıt formu
+  const p = prefix || 'f-k';
+  const ids = [p+'-empty-shells', p+'-unfertilized', p+'-infested', p+'-early', p+'-middle', p+'-late'];
   const sum = ids.reduce((s, id) => s + (parseInt($(id)?.value) || 0), 0);
-  const el = $('f-k-total-eggs');
+  const el = $(p+'-total-eggs');
   if (el) el.value = sum;
 }
 
@@ -1729,43 +1669,6 @@ document.addEventListener('focusin', e => {
     e.target.select();
   }
 });
-
-// ─── PHOTO ────────────────────────────────────────────────
-function onPhotoChange(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-  resizeAndStore(file, url => {
-    photoDataUrl = url;
-    $('photo-preview').src = url;
-    show('photo-preview-wrap');
-  });
-}
-function removePhoto() {
-  photoDataUrl = null;
-  $('f-photo').value = '';
-  $('photo-preview').src = '';
-  hide('photo-preview-wrap');
-}
-function resizeAndStore(file, cb) {
-  const reader = new FileReader();
-  reader.onload = e => {
-    const img = new Image();
-    img.onload = () => {
-      const MAX = 1200;
-      let w = img.width, h = img.height;
-      if (w > MAX || h > MAX) {
-        if (w > h) { h = Math.round(h * MAX / w); w = MAX; }
-        else       { w = Math.round(w * MAX / h); h = MAX; }
-      }
-      const canvas = document.createElement('canvas');
-      canvas.width = w; canvas.height = h;
-      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-      cb(canvas.toDataURL('image/jpeg', 0.75));
-    };
-    img.src = e.target.result;
-  };
-  reader.readAsDataURL(file);
-}
 
 function togglePred2() {
   const block = $('pred2-block');
@@ -1789,26 +1692,23 @@ function clearPredFields() {
   $('pred2-toggle-icon').textContent = '＋';
 }
 
-function resetForm() {
-  mainType = null; regionCode = null; subCode = null; photoDataUrl = null;
-  selectedNestId = null; selectedKontrolType = null; selectedIhtimal = null;
-  hide('iz-ihtimal-section');
-  hide('iz-gozlem-section');
-  hide('tur-section');
-  hide('alteration-section');
-  [25,50,75,100].forEach(v => { const b = $('ihtimal-'+v); if(b) b.className='region-btn'; });
-  resetTur(); resetGozlem(); resetAlteration();
-  show('observer-wrap');
-  show('tarih-block');
-  show('gps-section');
-  show('kum-section');
-  ['btn-yuva','btn-iz','btn-kontrol'].forEach(id => $(id).className = 'type-btn');
-  hide('region-section');
-  hide('subtype-section');
-  hide('pred-section');
-  hide('kontrol-section');
-  if ($('cikis-section')) hide('cikis-section');
-  freezeMainDate(false);
+function clearAcilisFields() {
+  ['f-a-dry-height','f-a-wet-height','f-a-diameter','f-a-infested','f-a-empty-shells',
+   'f-a-unfertilized','f-a-alive','f-a-dead-hatch','f-a-early','f-a-middle','f-a-late','f-a-dead-embryo']
+    .forEach(id => { const el = $(id); if (el) el.value = el.type === 'number' && el.getAttribute('value') === '0' ? '0' : ''; });
+  // sayaçları 0'a çek
+  ['f-a-infested','f-a-empty-shells','f-a-unfertilized','f-a-alive','f-a-dead-hatch',
+   'f-a-early','f-a-middle','f-a-late','f-a-dead-embryo'].forEach(id => { const el = $(id); if (el) el.value = '0'; });
+  const tot = $('f-a-total-eggs'); if (tot) tot.value = '0';
+  clearDatePicker('f-a-control-date-pick');
+}
+
+function resetForm(keepRegion) {
+  // keepRegion=true: seri giriş — aynı bölge/tip seçili kalır, sadece alanlar temizlenir
+  selectedNestId = null; selectedKontrolType = null;
+  resetGozlem(); resetAlteration();
+
+  // Ortak alanları temizle
   ['f-dry','f-semi','f-wet','f-lat','f-lng','f-notes',
    'f-k-dry-height','f-k-wet-height','f-k-diameter','f-k-total-eggs','f-k-infested',
    'f-k-empty-shells','f-k-unfertilized','f-k-alive','f-k-dead-hatch',
@@ -1816,20 +1716,44 @@ function resetForm() {
    'f-k-cikis-yavru','f-k-denize',
    'f-k-pred-extent','f-k-predator','f-k-pred-side','f-k-pred-eggs']
     .forEach(id => { const el = $(id); if(el) el.value = ''; });
-  setDatePicker('f-date-pick', todayStr());
-  // GPS durumunu tamamen sıfırla — yeni kayıt taze ölçüm yapsın
-  if (_gpsWatchId !== null) { navigator.geolocation.clearWatch(_gpsWatchId); _gpsWatchId = null; }
-  _gpsState = null;
-  $('gps-note').textContent = 'Otomatik doldurmak için "GPS Al" tuşuna basın.';
-  $('gps-btn').textContent  = '📍 GPS Al';
-  $('gps-btn').disabled     = false;
-  $('f-photo').value        = '';
-  $('photo-preview').src    = '';
-  hide('photo-preview-wrap');
+  clearDatePicker('f-date-pick');
   clearPredFields();
+  clearAcilisFields();
+
+  // Ek bölümleri kapat
+  hide('pred-section'); hide('cikis-section'); hide('acilis-section');
+  if ($('pred-toggle-btn'))   $('pred-toggle-btn').style.display = 'none';
+  if ($('cikis-toggle-btn'))  $('cikis-toggle-btn').style.display = 'none';
+  if ($('acilis-toggle-btn')) $('acilis-toggle-btn').style.display = 'none';
+  const cl = $('cikis-list'); if (cl) cl.innerHTML = ''; cikisCount = 0;
+
   show('form-body');
   $('form-success').classList.remove('active');
   window.scrollTo(0, 0);
+
+  if (keepRegion && mainType && (subCode || mainType === 'yuva')) {
+    // Seri giriş: aynı tip + bölge seçili kalsın, yeni kayda hazır
+    if (mainType === 'iz' && subCode) {
+      // İz: bölge zaten seçili, gözlem/ihtimal görünür kalsın; ihtimal %0'a dön
+      selectIhtimal(0);
+      show('iz-gozlem-section'); show('iz-ihtimal-section'); show('tur-section');
+    } else if (mainType === 'yuva' && subCode) {
+      // Yuva: alt tip seçili kalsın, kendi bölümü tekrar açık gelsin
+      selectSubtype(subCode);
+    }
+  } else {
+    // Tam sıfırlama (yeni bölge seçilecek)
+    mainType = null; regionCode = null; subCode = null; selectedIhtimal = null;
+    hide('iz-ihtimal-section'); hide('iz-gozlem-section'); hide('tur-section');
+    hide('alteration-section');
+    [25,50,75,100].forEach(v => { const b = $('ihtimal-'+v); if(b) b.className='region-btn'; });
+    resetTur();
+    show('tarih-block'); show('gps-section'); show('kum-section');
+    ['btn-yuva','btn-iz','btn-kontrol'].forEach(id => $(id).className = 'type-btn');
+    hide('region-section'); hide('subtype-section');
+    hide('pred-section'); hide('kontrol-section');
+    freezeMainDate(false);
+  }
 }
 
 
@@ -1884,75 +1808,45 @@ function showMotivation() {
   const el = $('success-motivasyon');
   if (el) el.textContent = MOTIVASYON[Math.floor(Math.random() * MOTIVASYON.length)];
 }
-function todayStr() { return new Date().toISOString().split('T')[0]; }
 function fmtDate(d) { if(!d) return ''; const [y,m,dd]=d.split('-'); return `${dd}.${m}.${y}`; }
 
 // ─── DATE PICKER ─────────────────────────────────────────
-const MONTHS = ['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];
-
 function buildDatePicker(containerId, initialDate) {
   const el = $(containerId);
   if (!el) return;
-  const now = initialDate ? new Date(initialDate + 'T12:00:00') : new Date();
-  const curYear = new Date().getFullYear();
-
-  // Days
-  let dayOpts = '<option value="">GG</option>';
-  for (let d = 1; d <= 31; d++) dayOpts += `<option value="${String(d).padStart(2,'0')}">${d}</option>`;
-
-  // Months
-  let monOpts = '<option value="">AA</option>';
-  MONTHS.forEach((m, i) => { monOpts += `<option value="${String(i+1).padStart(2,'0')}">${m}</option>`; });
-
-  // Years — 3 years back to 1 ahead
-  let yrOpts = '<option value="">YYYY</option>';
-  for (let y = curYear - 3; y <= curYear + 1; y++) yrOpts += `<option value="${y}">${y}</option>`;
-
+  // Gün ve ay klavyeyle yazılır (numara girişi), yıl sabit 2026.
   el.innerHTML =
-    `<select id="${containerId}-dd">${dayOpts}</select>` +
-    `<select id="${containerId}-mm">${monOpts}</select>` +
-    `<select id="${containerId}-yy">${yrOpts}</select>`;
+    `<input type="number" id="${containerId}-dd" placeholder="Gün" min="1" max="31" inputmode="numeric" class="date-num">` +
+    `<input type="number" id="${containerId}-mm" placeholder="Ay" min="1" max="12" inputmode="numeric" class="date-num">` +
+    `<input type="text" id="${containerId}-yy" value="2026" readonly class="date-num date-year">`;
 
   if (initialDate) {
     const [y, m, d] = initialDate.split('-');
-    $(containerId + '-dd').value = d;
-    $(containerId + '-mm').value = m;
-    $(containerId + '-yy').value = y;
+    $(containerId + '-dd').value = parseInt(d, 10);
+    $(containerId + '-mm').value = parseInt(m, 10);
   }
 }
 
 function getDatePicker(containerId) {
-  const dd = $(containerId + '-dd')?.value;
-  const mm = $(containerId + '-mm')?.value;
-  const yy = $(containerId + '-yy')?.value;
-  if (!dd || !mm || !yy) return '';
+  let dd = $(containerId + '-dd')?.value;
+  let mm = $(containerId + '-mm')?.value;
+  const yy = $(containerId + '-yy')?.value || '2026';
+  if (!dd || !mm) return '';
+  dd = String(parseInt(dd, 10)).padStart(2, '0');
+  mm = String(parseInt(mm, 10)).padStart(2, '0');
   return `${yy}-${mm}-${dd}`;
 }
 
-function setDatePicker(containerId, dateStr) {
-  if (!dateStr) return;
-  const [y, m, d] = dateStr.split('-');
-  const ddEl = $(containerId + '-dd');
-  const mmEl = $(containerId + '-mm');
-  const yyEl = $(containerId + '-yy');
-  if (ddEl) ddEl.value = d;
-  if (mmEl) mmEl.value = m;
-  if (yyEl) yyEl.value = y;
-}
-
 function clearDatePicker(containerId) {
-  ['dd','mm','yy'].forEach(s => {
+  ['dd','mm'].forEach(s => {
     const el = $(containerId + '-' + s);
     if (el) el.value = '';
   });
 }
 
 // ─── INIT ────────────────────────────────────────────────
-const today = todayStr();
 ['f-date-pick','f-pred-date-pick','f-pred2-date-pick']
   .forEach(id => buildDatePicker(id));
-
-setDatePicker('f-date-pick', today);
 
 // Predasyon select'lerini doldur (extent: Fully/Partly, side: Left/Right/...)
 (function fillPredSelects() {
